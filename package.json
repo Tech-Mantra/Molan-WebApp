@@ -1,0 +1,19 @@
+{
+  "name": "molan",
+  "version": "1.0.0",
+  "description": "A Web IDE for WBUT Students",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"No test given.\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tech-Mantra/Molan-WebApp.git"
+  },
+  "author": "Tech-Mantra",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Tech-Mantra/Molan-WebApp/issues"
+  },
+  "homepage": "https://github.com/Tech-Mantra/Molan-WebApp#readme"
+}
