@@ -1,8 +1,8 @@
 {
   "name": "molan",
   "version": "1.0.0",
-  "description": "A Web IDE for WBUT Students",
-  "main": "app.js",
+  "description": "A Next Generation Web IDE",
+  "main": "app/index.js",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --hot --inline --port 8080 --host 0.0.0.0",
     "test": "echo \"No test given.\""
@@ -25,10 +25,18 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.28.9",
+    "dev": "^0.1.3",
     "file-loader": "^1.1.6",
     "style-loader": "^0.20.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3"
   }
 }

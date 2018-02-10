@@ -26,3 +26,12 @@ Module Information:
 2. webpack.config.json
    Path: /webpack.config.json
    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+3. index.html
+   Path: /index.html
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+4. style.css
+   Path: /assets/css/style.css
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+5. index.js
+   Path: /app/index.js
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
