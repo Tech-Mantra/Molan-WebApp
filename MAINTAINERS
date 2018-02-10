@@ -23,3 +23,6 @@ Module Information:
 1. package.json
    Path: /package.json
    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+2. webpack.config.json
+   Path: /webpack.config.json
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>

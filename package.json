@@ -4,6 +4,7 @@
   "description": "A Web IDE for WBUT Students",
   "main": "app.js",
   "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --hot --inline --port 8080 --host 0.0.0.0",
     "test": "echo \"No test given.\""
   },
   "repository": {
@@ -22,6 +23,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.28.9",
     "file-loader": "^1.1.6",
     "style-loader": "^0.20.1",
