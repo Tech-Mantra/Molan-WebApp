@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - index.js
+ * Molan: Molan WebApp - header.js
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -20,24 +20,28 @@
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Header from "./component/header";
-import Content from "./component/content";
-import Footer from "./component/footer";
 
-class Index extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return(
-            <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-                <Header/>
-                <Content/>
-                <Footer/>
-            </div>
+            <header class="masthead mb-auto">
+                <div class="inner">
+                    <button type="button" class="btn btn-dark masthead-brand" data-toggle="tooltip" data-placement="top" title="Next Generation IDE">
+                        <h3>Molan</h3>
+                    </button>
+                    <nav class="nav nav-masthead justify-content-center">
+                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Contact</a>
+                    </nav>
+                </div>
+            </header>
         );
     }
 }
 
-ReactDOM.render(<Index/>, document.querySelector(".app_container"));
+export default Header;

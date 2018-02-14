@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - index.js
+ * Molan: Molan WebApp - content.js
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,4 +18,25 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-export const API_PATH = "0.0.0.0:3000/api"
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+class Content extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <main role="main" class="inner cover">
+                <h1 class="cover-heading">Cover your page.</h1>
+                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+                </p>
+            </main>
+        );
+    }
+}
+
+export default Content;

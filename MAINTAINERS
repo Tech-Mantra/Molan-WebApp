@@ -32,6 +32,18 @@ Module Information:
 4. style.css
    Path: /assets/css/style.css
    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-5. index.js
+5. index
    Path: /app/index.js
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+6. config
+   Path: /app/util/config.js
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+7. header
+   Path: /app/component/header.js
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+8. footer
+   Path: /app/component/footer.js
+   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+9. content
+   Path: /app/component/content.js
    Maintainer: Progyan Bhattacharya <progyanb@acm.org>

@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - index.js
+ * Molan: Molan WebApp - footer.js
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,4 +18,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-export const API_PATH = "0.0.0.0:3000/api"
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+class Footer extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <footer class="mastfoot mt-auto">
+                <div class="inner">
+                    <p>&copy; All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a></p>
+                </div>
+            </footer>
+        );
+    }
+}
+
+export default Footer;
