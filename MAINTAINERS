@@ -20,30 +20,34 @@ Team Information:
 
 Module Information:
 
-1. package.json
-   Path: /package.json
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-2. webpack.config.json
-   Path: /webpack.config.json
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-3. index.html
-   Path: /index.html
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-4. style.css
-   Path: /assets/css/style.css
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-5. index
-   Path: /app/index.js
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-6. config
-   Path: /app/util/config.js
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-7. header
-   Path: /app/component/header.js
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-8. footer
-   Path: /app/component/footer.js
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-9. content
-   Path: /app/component/content.js
-   Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+01. package.json
+    Path: /package.json
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+02. webpack.config.json
+    Path: /webpack.config.json
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+03. index.html
+    Path: /index.html
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+04. style.css
+    Path: /assets/css/style.css
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+05. index
+    Path: /app/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+06. config
+    Path: /app/util/config.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+07. Header
+    Path: /app/component/Header/index.js
+          /app/component/Header/Navlink.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+08. Footer
+    Path: /app/component/Footer/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+09. Content
+    Path: /app/component/Content/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+10. Home
+    Path: /app/component/Home/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>

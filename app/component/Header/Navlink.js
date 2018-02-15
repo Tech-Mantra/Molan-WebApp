@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/util/config
+ * Molan: Molan WebApp - app/component/header
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,9 +18,18 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-export const API_PATH = "0.0.0.0:3000/api";
-export const TAB_ID = {
-    "HOME": 0,
-    "FEATURES": 1,
-    "CONTACT": 2
-};
+import React, { Component } from "react";
+
+class Navlink extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <a className={this.props.selectedTab === this.props.currentTabID ? "nav-link active" : "nav-link"} href="#" onClick={(e)=>{this.props.updateTab(this.props.currentTabID)}}>{this.props.currentTabName}</a>
+        );
+    }
+}
+
+export default Navlink;

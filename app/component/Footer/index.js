@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - footer.js
+ * Molan: Molan WebApp - app/component/footer
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -19,7 +19,6 @@
  */
 
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 class Footer extends Component {
     constructor(props) {
@@ -28,9 +27,9 @@ class Footer extends Component {
 
     render() {
         return(
-            <footer class="mastfoot mt-auto">
-                <div class="inner">
-                    <p>&copy; All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a></p>
+            <footer className="mastfoot mt-auto">
+                <div className="inner">
+                    <p><label>&copy;</label> All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a></p>
                 </div>
             </footer>
         );

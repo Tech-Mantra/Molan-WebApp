@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - content.js
+ * Molan: Molan WebApp - app/component/home
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -19,24 +19,23 @@
  */
 
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
-class Content extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return(
-            <main role="main" class="inner cover">
-                <h1 class="cover-heading">Cover your page.</h1>
-                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-                <p class="lead">
-                    <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+            <main role="main" className="inner cover">
+                <h1 className="cover-heading">Cover your page.</h1>
+                <p className="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+                <p className="lead">
+                    <a href="#" className="btn btn-lg btn-secondary">Learn more</a>
                 </p>
             </main>
         );
     }
 }
 
-export default Content;
+export default Home;

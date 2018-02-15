@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - index.js
+ * Molan: Molan WebApp - app/index
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -20,23 +20,34 @@
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Header from "./component/header";
-import Content from "./component/content";
-import Footer from "./component/footer";
+import { TAB_ID } from "./util/config";
+import Header from "./component/Header";
+import Content from "./component/Content";
+import Footer from "./component/Footer";
 
 class Index extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            selectedTab: TAB_ID.HOME
+        };
+        this.updateTab = this.updateTab.bind(this);
     }
 
     render() {
+        console.log("App/index.js:", this.state);
         return(
-            <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-                <Header/>
-                <Content/>
+            <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+                <Header selectedTab={this.state.selectedTab} updateTab={this.updateTab}/>
+                <Content selectedTab={this.state.selectedTab}/>
                 <Footer/>
             </div>
         );
+    }
+
+    updateTab(newTab) {
+        let newState = Object.assign({}, this.state, { selectedTab: newTab });
+        this.setState(newState);
     }
 }
 

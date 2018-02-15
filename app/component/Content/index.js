@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - header.js
+ * Molan: Molan WebApp - app/component/content
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -19,29 +19,26 @@
  */
 
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import { TAB_ID } from "../../util/config";
+import Home from "../Home"
 
-class Header extends Component {
+class Content extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        return(
-            <header class="masthead mb-auto">
-                <div class="inner">
-                    <button type="button" class="btn btn-dark masthead-brand" data-toggle="tooltip" data-placement="top" title="Next Generation IDE">
-                        <h3>Molan</h3>
-                    </button>
-                    <nav class="nav nav-masthead justify-content-center">
-                        <a class="nav-link active" href="#">Home</a>
-                        <a class="nav-link" href="#">Features</a>
-                        <a class="nav-link" href="#">Contact</a>
-                    </nav>
-                </div>
-            </header>
-        );
+        switch (this.props.selectedTab) {
+            case TAB_ID.HOME:
+                return(
+                    <Home/>
+                );
+            default:
+                return(
+                    <h3>{this.props.selectedTab}</h3>
+                );
+        }
     }
 }
 
-export default Header;
+export default Content;
