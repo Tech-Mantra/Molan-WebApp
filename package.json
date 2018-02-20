@@ -5,6 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --hot --inline --port 8080 --host 0.0.0.0",
+    "build": "webpack --config webpack.config.js",
     "test": "echo \"No test given.\""
   },
   "repository": {
