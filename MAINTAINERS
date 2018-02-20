@@ -51,3 +51,18 @@ Module Information:
 10. Home
     Path: /app/component/Home/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+11. Language
+    Path: /app/component/Language/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+12. Editor
+    Path: /app/component/Editor/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+13. Checkbox
+    Path: /app/component/Checkbox/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+14. Submit Button
+    Path: /app/component/SubmitBtn/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+15. InputText
+Path: /app/component/InputText/index.js
+Maintainer: Progyan Bhattacharya <progyanb@acm.org>

@@ -19,7 +19,7 @@
  */
 
 import React, { Component } from "react";
-import { TAB_ID } from "../../util/config";
+import { PAGE_TITLE, TAB_ID } from "../../util/config";
 import Home from "../Home"
 
 class Content extends Component {
@@ -30,8 +30,19 @@ class Content extends Component {
     render() {
         switch (this.props.selectedTab) {
             case TAB_ID.HOME:
+                document.title = "Home | " + PAGE_TITLE;
                 return(
                     <Home/>
+                );
+            case TAB_ID.FEATURES:
+                document.title = "Features | " + PAGE_TITLE;
+                return(
+                    <h3>Features Available</h3>
+                );
+            case TAB_ID.CONTACT:
+                document.title = "Contact | " + PAGE_TITLE;
+                return(
+                    <h3>Contact Information</h3>
                 );
             default:
                 return(

@@ -19,22 +19,54 @@
  */
 
 import React, { Component } from "react";
+import Language from "../Language";
+import Editor from "../Editor";
+import Checkbox from "../Checkbox";
+import InputText from "../InputText";
+import SubmitBtn from "../SubmitBtn";
 
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            inputCheck: false
+        };
+        this.onCustomInputChecked = this.onCustomInputChecked.bind(this);
     }
 
     render() {
+        console.log("Home:", this.state);
         return(
-            <main role="main" className="inner cover">
-                <h1 className="cover-heading">Cover your page.</h1>
-                <p className="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-                <p className="lead">
-                    <a href="#" className="btn btn-lg btn-secondary">Learn more</a>
-                </p>
+            <main role="main" className="inner" style={{textAlign: "justify"}}>
+                <div className="row align-items-start">
+                    <div className="col align-self-start">
+                        <Language/>
+                    </div>
+                </div>
+                <div className="row align-items-center">
+                    <div className="col align-self-start">
+                        <Editor/>
+                    </div>
+                </div>
+                <div className="row align-items-end">
+                    <div className="col align-self-start">
+                        <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
+                    </div>
+                    <div className="col align-self-end" style={{textAlign: "right"}}>
+                        <SubmitBtn/>
+                    </div>
+                </div>
+                {
+                    this.state.inputCheck &&
+                    <InputText show={this.state.inputCheck}/>
+                }
             </main>
         );
+    }
+
+    onCustomInputChecked(event) {
+        let newState = Object.assign({}, this.state, { inputCheck: !this.state.inputCheck });
+        this.setState(newState);
     }
 }
 

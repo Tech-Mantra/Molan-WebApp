@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/util/config
+ * Molan: Molan WebApp - app/component/checkbox
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,10 +18,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-export const API_PATH = "0.0.0.0:3000/api";
-export const PAGE_TITLE = "Molan: neXT Generation IDE";
-export const TAB_ID = {
-    "HOME": 0,
-    "FEATURES": 1,
-    "CONTACT": 2
-};
+import React, { Component } from "react";
+
+class Checkbox extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <div className="form-check">
+                <input className="form-check-input" type="checkbox" value={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
+                <label className="form-check-label" htmlFor="inputCheck">
+                Custom Input
+                </label>
+            </div>
+        );
+    }
+}
+
+export default Checkbox;
