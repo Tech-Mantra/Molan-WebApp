@@ -64,5 +64,5 @@ Module Information:
     Path: /app/component/SubmitBtn/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 15. InputText
-Path: /app/component/InputText/index.js
-Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+    Path: /app/component/InputText/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>

@@ -27,7 +27,18 @@ class Language extends Component {
 
     render() {
         return(
-            <h3> Language Options </h3>
+            <form>
+              <div className="form-row align-items-center">
+                <div className="col-auto my-1">
+                  <label className="mr-sm-2" htmlFor="SelectLang">Language</label>
+                  <select className="custom-select mr-sm-2" id="SelectLang" onChange={this.props.onLanguageSelect} defaultValue="">
+                    <option value="" disabled={true} hidden={true}>Choose a language</option>
+                    <option value="C">C (STD C 99)</option>
+                    <option value="C++">C++ (STD C++ 99)</option>
+                  </select>
+                </div>
+              </div>
+            </form>
         );
     }
 }

@@ -29,8 +29,10 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputCheck: false
+            inputCheck: false,
+            language: null
         };
+        this.onLanguageSelect = this.onLanguageSelect.bind(this);
         this.onCustomInputChecked = this.onCustomInputChecked.bind(this);
     }
 
@@ -40,12 +42,12 @@ class Home extends Component {
             <main role="main" className="inner" style={{textAlign: "justify"}}>
                 <div className="row align-items-start">
                     <div className="col align-self-start">
-                        <Language/>
+                        <Language onLanguageSelect={this.onLanguageSelect}/>
                     </div>
                 </div>
                 <div className="row align-items-center">
                     <div className="col align-self-start">
-                        <Editor/>
+                        <Editor selectedLanguage={this.state.language}/>
                     </div>
                 </div>
                 <div className="row align-items-end">
@@ -62,6 +64,11 @@ class Home extends Component {
                 }
             </main>
         );
+    }
+
+    onLanguageSelect(event) {
+        let newState = Object.assign({}, this.state, { language: event.target.value });
+        this.setState(newState);
     }
 
     onCustomInputChecked(event) {

@@ -26,8 +26,13 @@ class Editor extends Component {
     }
 
     render() {
+        if (this.props.selectedLanguage === null) {
+            return(
+                <h2> Please select a language first. </h2>
+            );
+        }
         return(
-            <h2> Text Editor </h2>
+            <h2> Text Editor for {this.props.selectedLanguage} </h2>
         );
     }
 }
