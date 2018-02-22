@@ -31,8 +31,9 @@ class Editor extends Component {
                 <h2> Please select a language first. </h2>
             );
         }
+        let defaultText = `Please enter some ${this.props.selectedLanguage} code`;
         return(
-            <h2> Text Editor for {this.props.selectedLanguage} </h2>
+            <textarea placeholder={defaultText} width="100%" rows="10"></textarea>
         );
     }
 }
