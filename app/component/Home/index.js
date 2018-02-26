@@ -24,6 +24,7 @@ import Editor from "../Editor";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
 import SubmitBtn from "../SubmitBtn";
+import "./style.css";
 
 class Home extends Component {
     constructor(props) {
@@ -45,10 +46,11 @@ class Home extends Component {
                         <Language onLanguageSelect={this.onLanguageSelect}/>
                     </div>
                 </div>
-                <div className="row align-items-center">
+                <div className="row align-items-center editor_row">
                     <div className="col align-self-start">
                         <Editor selectedLanguage={this.state.language}/>
                     </div>
+                    <div className="w-100"></div>
                 </div>
                 <div className="row align-items-end">
                     <div className="col align-self-start">

@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/editor
+ * Molan: Molan WebApp - app/component/home
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -17,26 +17,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
-
-import React, { Component } from "react";
-import "./style.css";
-
-class Editor extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        if (this.props.selectedLanguage === null) {
-            return(
-                <textarea className="form-control" placeholder="Please select a language first." rows="10" readOnly={true} disabled={true}></textarea>
-            );
-        }
-        let defaultText = `Please enter some ${this.props.selectedLanguage} code`;
-        return(
-            <textarea className="form-control" placeholder={defaultText} rows="10"></textarea>
-        );
-    }
+ 
+.editor_row {
+    height: 300px;
+    overflow-y: auto;
 }
-
-export default Editor;
