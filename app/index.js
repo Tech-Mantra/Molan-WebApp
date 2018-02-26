@@ -20,10 +20,17 @@
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { TAB_ID } from "./util/config";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import promiseMiddleware from 'redux-promise';
 import Header from "./component/Header";
 import Content from "./component/Content";
 import Footer from "./component/Footer";
+import reducer from "./reducer";
+import { TAB_ID } from "./util/config";
+
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
+const store = createStoreWithMiddleware(reducer);
 
 class Index extends Component {
     constructor(props) {
@@ -51,4 +58,8 @@ class Index extends Component {
     }
 }
 
-ReactDOM.render(<Index/>, document.querySelector(".app_container"));
+ReactDOM.render(
+    <Provider store={store}>
+        <Index/>
+    </Provider>,
+    document.querySelector(".app_container"));

@@ -19,21 +19,45 @@
  */
 
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { checkStatus } from "../../action/statusAction";
 
 class Footer extends Component {
     constructor(props) {
         super(props);
+        this.status = "Loading";
     }
 
     render() {
+        if (typeof this.props.status !== "undefined" && this.props.status !== null) {
+            this.status = this.props.status;
+        }
         return(
             <footer className="mastfoot mt-auto">
                 <div className="inner">
                     <p><label>&copy;</label> All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a></p>
+                    <p>API Status {this.status}</p>
                 </div>
             </footer>
         );
     }
 }
 
-export default Footer;
+const mapStateToProps = (state) => {
+    return {
+        status: state.statusReducer.status
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        checkStatus: dispatch(checkStatus())
+    };
+};
+
+const VisibleFooter = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Footer);
+
+export default VisibleFooter;
