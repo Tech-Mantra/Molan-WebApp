@@ -35,6 +35,8 @@ class Language extends Component {
                     <option value="" disabled={true} hidden={true}>Choose a language</option>
                     <option value="c">C (STD C 99)</option>
                     <option value="cpp">C++ (STD C++ 99)</option>
+                    <option value="java">Java (OpenJDK 0.8)</option>
+                    <option value="python">Python (Python 3.5)</option>
                     <option value="javascript">Javascript (Node 8.9.4)</option>
                   </select>
                 </div>
@@ -45,3 +47,10 @@ class Language extends Component {
 }
 
 export default Language;
+
+/*
+<option value="go">Go</option>
+<option value="php">PHP</option>
+<option value="csharp">C# </option>
+<option value="objective-c">Objective C</option>
+*/

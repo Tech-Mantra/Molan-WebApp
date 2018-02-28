@@ -21,6 +21,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { checkStatus } from "../../action/statusAction";
+import "./style.css";
 
 class Footer extends Component {
     constructor(props) {
@@ -35,8 +36,10 @@ class Footer extends Component {
         return(
             <footer className="mastfoot mt-auto">
                 <div className="inner">
-                    <p><label>&copy;</label> All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a></p>
-                    <p>API Status {this.status}</p>
+                    <p>
+                        <label>&copy;</label> All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a>&nbsp;&bull;&nbsp;
+                        <span className="mb-2 bg-light text-dark round-border no-padding-right">API <label className={this.status === "Good" ? "mb-2 bg-success text-white round-border" : "mb-2 bg-danger text-white round-border"}> {this.status}</label></span>
+                    </p>
                 </div>
             </footer>
         );

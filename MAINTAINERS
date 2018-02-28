@@ -44,6 +44,7 @@ Module Information:
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 08. Footer
     Path: /app/component/Footer/index.js
+          /app/component/Footer/style.css
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 09. Content
     Path: /app/component/Content/index.js
@@ -67,4 +68,7 @@ Module Information:
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 15. InputText
     Path: /app/component/InputText/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+16. init_code
+    Path: /app/util/init_code.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
