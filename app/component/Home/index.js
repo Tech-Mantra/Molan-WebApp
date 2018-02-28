@@ -50,9 +50,8 @@ class Home extends Component {
                     <div className="col align-self-start">
                         <Editor selectedLanguage={this.state.language}/>
                     </div>
-                    <div className="w-100"></div>
                 </div>
-                <div className="row align-items-end">
+                <div className="row align-items-end btn_space">
                     <div className="col align-self-start">
                         <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
                     </div>

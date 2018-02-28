@@ -17,8 +17,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
- 
+
 .editor_row {
     height: 300px;
-    overflow-y: auto;
+    overflow-y: hidden;
+}
+
+.btn_space {
+    padding: 30px 0; 
 }

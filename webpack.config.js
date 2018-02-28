@@ -1,4 +1,5 @@
 const webpack = require("webpack"),
+      CopyWebpackPlugin = require('copy-webpack-plugin'),
       path    = require("path"),
       env     = process.env,
       PACKAGE = require("./package.json"),
@@ -42,11 +43,18 @@ module.exports = {
         net: "empty",
         dns: "empty"
     },
-    plugins: [ new webpack.BannerPlugin(banner) ],
+    plugins: [
+        new webpack.BannerPlugin(banner),
+        new CopyWebpackPlugin([
+            {
+                from: 'node_modules/monaco-editor/min/vs',
+                to: 'vs',
+            }
+        ])
+    ],
     devServer: {
         inline: true,
         historyApiFallback: true,
         contentBase: "./"
     }
 };
-

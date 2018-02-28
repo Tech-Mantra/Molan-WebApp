@@ -19,11 +19,24 @@
  */
 
 import React, { Component } from "react";
+import MonacoEditor from 'react-monaco-editor';
 import "./style.css";
 
 class Editor extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            code: null
+        };
+    }
+
+    editorDidMount(editor, monaco) {
+        console.log('editorDidMount', editor);
+        editor.focus();
+    }
+
+    onChange(newValue, e) {
+        console.log('onChange', newValue, e);
     }
 
     render() {
@@ -32,9 +45,26 @@ class Editor extends Component {
                 <textarea className="form-control" placeholder="Please select a language first." rows="10" readOnly={true} disabled={true}></textarea>
             );
         }
-        let defaultText = `Please enter some ${this.props.selectedLanguage} code`;
+        let defaultText = `// Please enter some ${this.props.selectedLanguage} code`;
+        /*
         return(
             <textarea className="form-control" placeholder={defaultText} rows="10"></textarea>
+        );
+        */
+        const code = this.state.code;
+        const options = {
+            selectOnLineNumbers: true
+        };
+        return (
+            <MonacoEditor
+                height="800"
+                language={this.props.selectedLanguage}
+                theme="vs-light"
+                value={code || defaultText}
+                options={options}
+                onChange={this.onChange}
+                editorDidMount={this.editorDidMount}
+            />
         );
     }
 }
