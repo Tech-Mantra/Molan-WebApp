@@ -46,7 +46,7 @@ class Footer extends Component {
         }
         return(
             <footer className="mastfoot mt-auto">
-                <div className="inner">
+                <div className="inner footer-bottom">
                     <p>
                         <label>&copy;</label> All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a>&nbsp;&bull;&nbsp;
                         <span className="mb-2 bg-light text-dark round-border no-padding-right" data-toggle="tooltip" data-placement="top" title={this.info}>API <label className={this.status === "Good" ? "mb-2 bg-success text-white round-border" : "mb-2 bg-danger text-white round-border"} onClick={this.reloadStatus}> {this.status}</label></span>

@@ -67,9 +67,15 @@ Module Information:
 14. Submit Button
     Path: /app/component/SubmitBtn/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-15. InputText
+15. FileBtn
+    Path: /app/component/FileBtn/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+16. InputText
     Path: /app/component/InputText/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-16. init_code
+17. OutputText
+    Path: /app/component/OutputText/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+18. init_code
     Path: /app/util/init_code.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>

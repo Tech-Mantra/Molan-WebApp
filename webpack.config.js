@@ -50,27 +50,7 @@ module.exports = {
                 from: 'node_modules/monaco-editor/min/vs',
                 to: 'vs',
             }
-        ]),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                sequences: true,
-                dead_code: true,
-                conditionals: true,
-                booleans: true,
-                unused: true,
-                if_return: true,
-                join_vars: true,
-                drop_console: true,
-                warnings: false
-            },
-            mangle: {
-                except: ['$super', '$', 'exports', 'require']
-            },
-            output: {
-                comments: false
-            }
-        })
+        ])
     ],
     devServer: {
         inline: true,
@@ -78,3 +58,27 @@ module.exports = {
         contentBase: "./"
     }
 };
+
+/*
+Production
+new webpack.optimize.UglifyJsPlugin({
+    sourceMap: true,
+    compress: {
+        sequences: true,
+        dead_code: true,
+        conditionals: true,
+        booleans: true,
+        unused: true,
+        if_return: true,
+        join_vars: true,
+        drop_console: true,
+        warnings: false
+    },
+    mangle: {
+        except: ['$super', '$', 'exports', 'require']
+    },
+    output: {
+        comments: false
+    }
+})
+*/

@@ -24,6 +24,7 @@ import Language from "../Language";
 import Theme from "../Theme";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
+import FileBtn from "../FileBtn";
 import SubmitBtn from "../SubmitBtn";
 import init_code from "../../util/init_code";
 import "./style.css";
@@ -102,6 +103,7 @@ class Home extends Component {
                         <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
                     </div>
                     <div className="col align-self-end" style={{textAlign: "right"}}>
+                        <FileBtn onChange={(v, e) => { this.onChange(v,e); this.forceUpdate(); }}/>
                         <SubmitBtn onSubmit={this.onSubmit}/>
                     </div>
                 </div>
@@ -143,7 +145,7 @@ class Home extends Component {
             id: Date.now(),
             language: language,
             source: code,
-            haveInput: this.state.inputCheck === true,
+            haveInput: this.state.inputCheck,
             input: this.input
         };
         console.log("Submission: ", submitObject);

@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/submit_btn
+ * Molan: Molan WebApp - app/component/file_btn
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -20,18 +20,35 @@
 
 import React, { Component } from "react";
 
-class SubmitBtn extends Component {
+class FileBtn extends Component {
     constructor(props) {
         super(props);
+        this.fileBtn = null;
+        this.onClick = this.onClick.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     render() {
         return(
-            <button type="button" className="btn btn-light custom-btn" onClick={this.props.onSubmit}>
-                Submit
+            <button type="button" className="btn btn-light custom-btn" onClick={this.onClick}>
+                Add File
+                <input type="file" accepts=".c,.cpp,.java,.js,.py" style={{ display: "none" }} ref={input => this.fileBtn = input} onChange={this.onChange}/>
             </button>
         );
     }
+
+    onClick(event) {
+        this.fileBtn.click();
+    }
+
+    onChange(event) {
+        const file = event.target.files[0];
+        let fileReader = new FileReader();
+        fileReader.onload = function(event) {
+            this.props.onChange(event.target.result, event);
+        }.bind(this);
+        fileReader.readAsText(file, "ASCII");
+    }
 }
 
-export default SubmitBtn;
+export default FileBtn;
