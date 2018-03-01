@@ -19,11 +19,12 @@
  */
 
 import React, { Component } from "react";
+import MonacoEditor from "react-monaco-editor";
 import Language from "../Language";
-import Editor from "../Editor";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
 import SubmitBtn from "../SubmitBtn";
+import init_code from "../../util/init_code";
 import "./style.css";
 
 class Home extends Component {
@@ -31,24 +32,46 @@ class Home extends Component {
         super(props);
         this.state = {
             inputCheck: false,
-            language: null
+            language: "c"
         };
+        this.code = null;
+        this.onChange = this.onChange.bind(this);
         this.onLanguageSelect = this.onLanguageSelect.bind(this);
         this.onCustomInputChecked = this.onCustomInputChecked.bind(this);
     }
 
+    editorDidMount(editor, monaco) {
+        // console.log("editorDidMount", editor);
+        editor.focus();
+    }
+
+    onChange(newValue, e) {
+        this.code = newValue;
+    }
+
     render() {
         console.log("Home:", this.state);
+        const options = {
+            selectOnLineNumbers: true
+        };
         return(
             <main role="main" className="inner" style={{textAlign: "justify"}}>
                 <div className="row align-items-start">
                     <div className="col align-self-start">
-                        <Language onLanguageSelect={this.onLanguageSelect}/>
+                        <Language defaultValue={this.state.language} onLanguageSelect={this.onLanguageSelect}/>
                     </div>
                 </div>
                 <div className="row align-items-center editor_row">
                     <div className="col align-self-start">
-                        <Editor selectedLanguage={this.state.language}/>
+                        <MonacoEditor
+                            height="800"
+                            language={this.state.language}
+                            theme="vs-light"
+                            value={this.code || init_code(this.state.language)}
+                            options={options}
+                            onChange={this.onChange}
+                            editorDidMount={this.editorDidMount}
+                        />
                     </div>
                 </div>
                 <div className="row align-items-end btn_space">

@@ -47,7 +47,10 @@ public class Molan {
 `# Cook your codes here
 `,
        jstemp =
-`// Enter your codes here
+`process.stdin.resume();
+process.stdin.setEncoding("utf8");
+
+// Enter your codes here
 `;
 
 function init_code(language) {
