@@ -84,7 +84,7 @@ class Home extends Component {
                         <Theme defaultValue={this.state.theme} onThemeSelect={this.onThemeSelect}/>
                     </div>
                 </div>
-                <div className="row align-items-center editor_row">
+                <div className="row align-items-center editor-row">
                     <div className="col align-self-start">
                         <MonacoEditor
                             height="800"
@@ -97,7 +97,7 @@ class Home extends Component {
                         />
                     </div>
                 </div>
-                <div className="row align-items-end btn_space">
+                <div className="row align-items-end btn-space">
                     <div className="col align-self-start">
                         <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
                     </div>
@@ -105,10 +105,14 @@ class Home extends Component {
                         <SubmitBtn onSubmit={this.onSubmit}/>
                     </div>
                 </div>
+                <div className="row align-items-center">
                 {
                     this.state.inputCheck &&
-                    <InputText defaultValue={this.input} onCustomInput={this.onCustomInput}/>
+                    <div className="col align-self-start">
+                        <InputText defaultValue={this.input} onCustomInput={this.onCustomInput}/>
+                    </div>
                 }
+                </div>
             </main>
         );
     }

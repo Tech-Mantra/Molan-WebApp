@@ -18,11 +18,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-.editor_row {
+.editor-row {
     height: 300px;
     overflow-y: hidden;
 }
 
-.btn_space {
-    padding: 30px 0; 
+.react-monaco-editor-container {
+    background: #fff url("/assets/img/loading.gif") no-repeat !important;
+}
+
+.btn-space {
+    padding: 30px 0 0 0;
 }
