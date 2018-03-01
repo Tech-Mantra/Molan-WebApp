@@ -21,6 +21,7 @@
 import React, { Component } from "react";
 import MonacoEditor from "react-monaco-editor";
 import Language from "../Language";
+import Theme from "../Theme";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
 import SubmitBtn from "../SubmitBtn";
@@ -32,13 +33,16 @@ class Home extends Component {
         super(props);
         this.state = {
             inputCheck: false,
-            language: "c"
+            language: "c",
+            theme: "vs-light"
         };
         this.code = [];
         this.input = null;
         this.onChange = this.onChange.bind(this);
         this.onLanguageSelect = this.onLanguageSelect.bind(this);
+        this.onThemeSelect = this.onThemeSelect.bind(this);
         this.onCustomInputChecked = this.onCustomInputChecked.bind(this);
+        this.onCustomInput = this.onCustomInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
@@ -76,6 +80,9 @@ class Home extends Component {
                     <div className="col align-self-start">
                         <Language defaultValue={this.state.language} onLanguageSelect={this.onLanguageSelect}/>
                     </div>
+                    <div className="col align-self-start">
+                        <Theme defaultValue={this.state.theme} onThemeSelect={this.onThemeSelect}/>
+                    </div>
                 </div>
                 <div className="row align-items-center editor_row">
                     <div className="col align-self-start">
@@ -100,7 +107,7 @@ class Home extends Component {
                 </div>
                 {
                     this.state.inputCheck &&
-                    <InputText show={this.state.inputCheck}/>
+                    <InputText defaultValue={this.input} onCustomInput={this.onCustomInput}/>
                 }
             </main>
         );
@@ -111,9 +118,18 @@ class Home extends Component {
         this.setState(newState);
     }
 
+    onThemeSelect(event) {
+        let newState = Object.assign({}, this.state, { theme: event.target.value });
+        this.setState(newState);
+    }
+
     onCustomInputChecked(event) {
         let newState = Object.assign({}, this.state, { inputCheck: !this.state.inputCheck });
         this.setState(newState);
+    }
+
+    onCustomInput(event) {
+        this.input = event.target.value;
     }
 
     onSubmit(event) {

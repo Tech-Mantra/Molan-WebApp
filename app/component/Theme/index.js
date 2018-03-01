@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/input_text
+ * Molan: Molan WebApp - app/component/theme
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -19,26 +19,28 @@
  */
 
 import React, { Component } from "react";
+import "./style.css";
 
-class InputText extends Component {
+class Theme extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return(
-            <div className="row align-items-center">
-                <div className="col">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="inputField">Enter your input here</label>
-                            <textarea className="form-control" id="inputField" rows="2" onChange={this.props.onCustomInput}>{this.props.defaultValue}</textarea>
-                        </div>
-                    </form>
+            <form>
+              <div className="form-row align-items-center">
+                <div className="col-auto my-1 align-right">
+                  <label className="mr-sm-2" htmlFor="SelectTheme">Theme</label>
+                  <select className="custom-select mr-sm-2" id="SelectTheme" onChange={this.props.onThemeSelect} defaultValue={this.props.defaultValue}>
+                    <option value="vs-light">Light</option>
+                    <option value="vs-dark">Dark</option>
+                  </select>
                 </div>
-            </div>
+              </div>
+            </form>
         );
     }
 }
 
-export default InputText;
+export default Theme;
