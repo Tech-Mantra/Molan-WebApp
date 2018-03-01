@@ -27,7 +27,7 @@ class SubmitBtn extends Component {
 
     render() {
         return(
-            <button type="button" className="btn btn-light">
+            <button type="button" className="btn btn-light" onClick={this.props.onSubmit}>
                 Submit
             </button>
         );

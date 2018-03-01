@@ -34,10 +34,12 @@ class Home extends Component {
             inputCheck: false,
             language: "c"
         };
-        this.code = null;
+        this.code = [];
+        this.input = null;
         this.onChange = this.onChange.bind(this);
         this.onLanguageSelect = this.onLanguageSelect.bind(this);
         this.onCustomInputChecked = this.onCustomInputChecked.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     editorDidMount(editor, monaco) {
@@ -45,12 +47,26 @@ class Home extends Component {
         editor.focus();
     }
 
-    onChange(newValue, e) {
-        this.code = newValue;
+    onChange(newValue, event) {
+        const language = this.state.language;
+        const snippet = this.code.find(e => e.language === language);
+        snippet.code = newValue;
     }
 
     render() {
         console.log("Home:", this.state);
+        const language = this.state.language;
+        let code = null;
+        const snippet = this.code.find(e => e.language === language);
+        if (typeof snippet === "undefined" || snippet === null) {
+            code = init_code(language);
+            this.code.push({
+                language: language,
+                code: code
+            });
+        } else {
+            code = snippet.code;
+        }
         const options = {
             selectOnLineNumbers: true
         };
@@ -65,9 +81,9 @@ class Home extends Component {
                     <div className="col align-self-start">
                         <MonacoEditor
                             height="800"
-                            language={this.state.language}
-                            theme="vs-light"
-                            value={this.code || init_code(this.state.language)}
+                            language={language}
+                            theme={this.state.theme}
+                            value={code}
                             options={options}
                             onChange={this.onChange}
                             editorDidMount={this.editorDidMount}
@@ -79,7 +95,7 @@ class Home extends Component {
                         <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
                     </div>
                     <div className="col align-self-end" style={{textAlign: "right"}}>
-                        <SubmitBtn/>
+                        <SubmitBtn onSubmit={this.onSubmit}/>
                     </div>
                 </div>
                 {
@@ -98,6 +114,19 @@ class Home extends Component {
     onCustomInputChecked(event) {
         let newState = Object.assign({}, this.state, { inputCheck: !this.state.inputCheck });
         this.setState(newState);
+    }
+
+    onSubmit(event) {
+        const language = this.state.language;
+        const code = this.code.find(e => e.language === language).code;
+        const submitObject = {
+            id: Date.now(),
+            language: language,
+            source: code,
+            haveInput: this.state.inputCheck === true,
+            input: this.input
+        };
+        console.log("Submission: ", submitObject);
     }
 }
 
