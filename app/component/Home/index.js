@@ -47,8 +47,8 @@ class Home extends Component {
     }
 
     editorDidMount(editor, monaco) {
-        // console.log("editorDidMount", editor);
-        editor.focus();
+        console.log("editorDidMount: ", editor, monaco);
+        // editor.focus();
     }
 
     onChange(newValue, event) {
