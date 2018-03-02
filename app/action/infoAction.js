@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/reducer/index
+ * Molan: Molan WebApp - app/action/info
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,13 +18,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { combineReducers } from "redux";
-import statusReducer from "./statusReducer";
-import infoReducer from "./infoReducer";
+import axios from "axios";
+import { API_PATH } from "../util/config";
+import { API_INFO } from "./actionTypes";
 
-const reducer = combineReducers({
-    statusReducer,
-    infoReducer
-});
-
-export default reducer;
+export function checkInfo() {
+    const request = axios.get(API_PATH + "/info");
+    return {
+        type: API_INFO,
+        payload: request
+    };
+}

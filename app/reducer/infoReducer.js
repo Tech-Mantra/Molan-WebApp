@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/reducer/index
+ * Molan: Molan WebApp - app/reducer/info
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,13 +18,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { combineReducers } from "redux";
-import statusReducer from "./statusReducer";
-import infoReducer from "./infoReducer";
+import { API_INFO } from "../action/actionTypes";
 
-const reducer = combineReducers({
-    statusReducer,
-    infoReducer
-});
+const infoReducer = (state = {}, action) => {
+    switch(action.type) {
+        case API_INFO:
+            console.log("infoReducer: ", action);
+            return Object.assign({}, state, action.payload.data);
+        default:
+            return state;
+    }
+}
 
-export default reducer;
+export default infoReducer;

@@ -29,8 +29,9 @@ Module Information:
 03. index.html
     Path: /index.html
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-04. style.css
-    Path: /assets/css/style.css
+04. Actions
+    Path: /app/action/*
+          /app/reducer/*
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 05. index
     Path: /app/index.js

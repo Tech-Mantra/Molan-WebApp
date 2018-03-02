@@ -27,6 +27,14 @@
     background: #fff url("/assets/img/loading.gif") no-repeat !important;
 }
 
+.monaco-menu-container {
+    background-color: #000 !important;
+}
+
+.custom-btn {
+    margin: 0 5px;
+}
+
 .btn-space {
     padding: 30px 0 0 0;
 }

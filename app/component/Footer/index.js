@@ -21,40 +21,59 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { checkStatus } from "../../action/statusAction";
+import { checkInfo } from "../../action/infoAction";
 import "./style.css";
 
 class Footer extends Component {
     constructor(props) {
         super(props);
         this.status = "Loading";
+        this.info = "No information available";
+        this.reloadStatus = this.reloadStatus.bind(this);
+    }
+
+    componentWillMount() {
+        this.props.checkStatus();
+        this.props.checkInfo();
     }
 
     render() {
         if (typeof this.props.status !== "undefined" && this.props.status !== null) {
             this.status = this.props.status;
         }
+        if (typeof this.props.info !== "undefined" && this.props.info !== null) {
+            this.info = this.props.info;
+        }
         return(
             <footer className="mastfoot mt-auto">
                 <div className="inner">
                     <p>
                         <label>&copy;</label> All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank">Tech-Mantra</a>&nbsp;&bull;&nbsp;
-                        <span className="mb-2 bg-light text-dark round-border no-padding-right">API <label className={this.status === "Good" ? "mb-2 bg-success text-white round-border" : "mb-2 bg-danger text-white round-border"}> {this.status}</label></span>
+                        <span className="mb-2 bg-light text-dark round-border no-padding-right" data-toggle="tooltip" data-placement="top" title={this.info}>API <label className={this.status === "Good" ? "mb-2 bg-success text-white round-border" : "mb-2 bg-danger text-white round-border"} onClick={this.reloadStatus}> {this.status}</label></span>
                     </p>
                 </div>
             </footer>
         );
     }
+
+    reloadStatus(event) {
+        this.status = "Loading";
+        this.props.checkStatus();
+        this.props.checkInfo();
+    }
 }
 
 const mapStateToProps = (state) => {
     return {
-        status: state.statusReducer.status
+        status: state.statusReducer.status,
+        info: state.infoReducer
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        checkStatus: dispatch(checkStatus())
+        checkStatus: () => dispatch(checkStatus()),
+        checkInfo: () => dispatch(checkInfo())
     };
 };
 
