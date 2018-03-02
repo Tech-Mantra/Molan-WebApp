@@ -20,8 +20,8 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { checkStatus } from "../../action/statusAction";
-import { checkInfo } from "../../action/infoAction";
+import checkStatus from "../../action/statusAction";
+import checkInfo from "../../action/infoAction";
 import "./style.css";
 
 class Footer extends Component {
@@ -66,7 +66,7 @@ class Footer extends Component {
 const mapStateToProps = (state) => {
     return {
         status: state.statusReducer.status,
-        info: state.infoReducer
+        info: state.infoReducer.info
     };
 };
 

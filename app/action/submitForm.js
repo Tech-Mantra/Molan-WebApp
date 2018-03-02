@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/reducer/index
+ * Molan: Molan WebApp - app/action/submit_form
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,15 +18,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { combineReducers } from "redux";
-import statusReducer from "./statusReducer";
-import infoReducer from "./infoReducer";
-import formReducer from "./formReducer";
+import axios from "axios";
+import { API_PATH } from "../util/config";
+import { FORM_SUBMISSION } from "./actionTypes";
 
-const reducer = combineReducers({
-    statusReducer,
-    infoReducer,
-    formReducer
-});
+function submitForm(formObject) {
+    const request = axios.post(API_PATH + "/submit", formObject);
+    return {
+        type: FORM_SUBMISSION,
+        payload: request
+    };
+}
 
-export default reducer;
+export default submitForm;

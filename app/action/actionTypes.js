@@ -20,3 +20,4 @@
 
 export const API_STATUS = "API_STATUS";
 export const API_INFO = "API_INFO";
+export const FORM_SUBMISSION = "FORM_SUBMISSION";

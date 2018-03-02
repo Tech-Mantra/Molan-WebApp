@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/reducer/index
+ * Molan: Molan WebApp - app/reducer/form
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,15 +18,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { combineReducers } from "redux";
-import statusReducer from "./statusReducer";
-import infoReducer from "./infoReducer";
-import formReducer from "./formReducer";
+import { FORM_SUBMISSION } from "../action/actionTypes";
 
-const reducer = combineReducers({
-    statusReducer,
-    infoReducer,
-    formReducer
-});
+const infoReducer = (state = {}, action) => {
+    switch(action.type) {
+        case FORM_SUBMISSION:
+            console.log("formReducer: ", action);
+            return Object.assign({}, state, { data: action.payload.data });
+        default:
+            return state;
+    }
+}
 
-export default reducer;
+export default infoReducer;

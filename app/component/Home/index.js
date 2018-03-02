@@ -20,10 +20,13 @@
 
 import React, { Component } from "react";
 import MonacoEditor from "react-monaco-editor";
+import { connect } from "react-redux";
+import submitForm from "../../action/submitForm";
 import Language from "../Language";
 import Theme from "../Theme";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
+import OutputText from "../OutputText";
 import FileBtn from "../FileBtn";
 import SubmitBtn from "../SubmitBtn";
 import init_code from "../../util/init_code";
@@ -87,14 +90,7 @@ class Home extends Component {
                 </div>
                 <div className="row align-items-center editor-row">
                     <div className="col align-self-start">
-                        <MonacoEditor
-                            height="800"
-                            language={language}
-                            theme={this.state.theme}
-                            value={code}
-                            options={options}
-                            onChange={this.onChange}
-                            editorDidMount={this.editorDidMount}
+                        <MonacoEditor height="800" language={language} theme={this.state.theme} value={code} options={options} onChange={this.onChange} editorDidMount={this.editorDidMount}
                         />
                     </div>
                 </div>
@@ -112,6 +108,12 @@ class Home extends Component {
                     this.state.inputCheck &&
                     <div className="col align-self-start">
                         <InputText defaultValue={this.input} onCustomInput={this.onCustomInput}/>
+                    </div>
+                }
+                {
+                    this.props.data &&
+                    <div className="col align-self-end">
+                        <OutputText status={this.props.data.status} content={this.props.data.content}/>
                     </div>
                 }
                 </div>
@@ -148,8 +150,25 @@ class Home extends Component {
             haveInput: this.state.inputCheck,
             input: this.input
         };
-        console.log("Submission: ", submitObject);
+        this.props.submitForm(submitObject);
     }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        data: state.formReducer.data
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        submitForm: (data) => dispatch(submitForm(data))
+    };
+};
+
+const VisibleHome = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Home);
+
+export default VisibleHome;
