@@ -29,6 +29,7 @@ import InputText from "../InputText";
 import OutputText from "../OutputText";
 import FileBtn from "../FileBtn";
 import SubmitBtn from "../SubmitBtn";
+import cache from "../../util/cache";
 import init_code from "../../util/init_code";
 import "./style.css";
 
@@ -40,7 +41,7 @@ class Home extends Component {
             language: "c",
             theme: "vs-light"
         };
-        this.code = [];
+        this.code = cache();
         this.input = null;
         this.onChange = this.onChange.bind(this);
         this.onLanguageSelect = this.onLanguageSelect.bind(this);
@@ -59,6 +60,7 @@ class Home extends Component {
         const language = this.state.language;
         const snippet = this.code.find(e => e.language === language);
         snippet.code = newValue;
+        cache(this.code);
     }
 
     render() {
