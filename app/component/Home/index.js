@@ -29,22 +29,24 @@ import InputText from "../InputText";
 import OutputText from "../OutputText";
 import FileBtn from "../FileBtn";
 import SubmitBtn from "../SubmitBtn";
+import cache from "../../util/cache";
 import init_code from "../../util/init_code";
 import "./style.css";
 
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.code = cache();
         this.state = {
             inputCheck: false,
-            language: "c",
-            theme: "vs-light"
+            language: this.code.length > 0 ? this.code[0].language : "c"
         };
-        this.code = [];
         this.input = null;
         this.onChange = this.onChange.bind(this);
         this.onLanguageSelect = this.onLanguageSelect.bind(this);
         this.onThemeSelect = this.onThemeSelect.bind(this);
+        this.onFileUpload = this.onFileUpload.bind(this);
+        this.onReload = this.onReload.bind(this);
         this.onCustomInputChecked = this.onCustomInputChecked.bind(this);
         this.onCustomInput = this.onCustomInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -59,10 +61,12 @@ class Home extends Component {
         const language = this.state.language;
         const snippet = this.code.find(e => e.language === language);
         snippet.code = newValue;
+        snippet.timestamp = Date.now();
+        cache(this.code);
     }
 
     render() {
-        console.log("Home:", this.state);
+        console.log("Home:", this.state, this.code);
         const language = this.state.language;
         let code = null;
         const snippet = this.code.find(e => e.language === language);
@@ -70,7 +74,8 @@ class Home extends Component {
             code = init_code(language);
             this.code.push({
                 language: language,
-                code: code
+                code: code,
+                timestamp: 0
             });
         } else {
             code = snippet.code;
@@ -84,8 +89,10 @@ class Home extends Component {
                     <div className="col align-self-start">
                         <Language defaultValue={this.state.language} onLanguageSelect={this.onLanguageSelect}/>
                     </div>
-                    <div className="col align-self-start">
-                        <Theme defaultValue={this.state.theme} onThemeSelect={this.onThemeSelect}/>
+                    <div className="col align-self-end" style={{ textAlign: "right" }}>
+                        <FileBtn onChange={this.onFileUpload}/>
+                        <ReloadBtn onReload={this.onReload}/>
+                        <SaveBtn code={code} language={language}/>
                     </div>
                 </div>
                 <div className="row align-items-center editor-row">
@@ -129,6 +136,18 @@ class Home extends Component {
     onThemeSelect(event) {
         let newState = Object.assign({}, this.state, { theme: event.target.value });
         this.setState(newState);
+    }
+
+    onFileUpload(value, event) {
+        this.onChange(value, event);
+        cache(value);
+        this.forceUpdate();
+    }
+
+    onReload(event) {
+        localStorage.removeItem(LOCALKEY);
+        this.code = [];
+        this.forceUpdate();
     }
 
     onCustomInputChecked(event) {

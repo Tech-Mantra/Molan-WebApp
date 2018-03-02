@@ -79,3 +79,6 @@ Module Information:
 18. init_code
     Path: /app/util/init_code.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+19. cache
+    Path: /app/util/cache.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
