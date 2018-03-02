@@ -24,7 +24,7 @@ const infoReducer = (state = {}, action) => {
     switch(action.type) {
         case API_INFO:
             console.log("infoReducer: ", action);
-            return Object.assign({}, state, action.payload.data);
+            return Object.assign({}, state, { info: action.payload.data });
         default:
             return state;
     }

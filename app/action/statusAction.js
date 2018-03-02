@@ -22,10 +22,12 @@ import axios from "axios";
 import { API_PATH } from "../util/config";
 import { API_STATUS } from "./actionTypes";
 
-export function checkStatus() {
+function checkStatus() {
     const request = axios.get(API_PATH + "/status");
     return {
         type: API_STATUS,
         payload: request
     };
 }
+
+export default checkStatus;

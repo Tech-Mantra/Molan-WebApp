@@ -31,8 +31,8 @@ class OutputText extends Component {
                 <div className="col">
                     <form>
                         <div className="form-group">
-                            <label htmlFor="outputField">Output (state):</label>
-                            <textarea className="form-control" id="outputField" rows="2">(Output from server)</textarea>
+                            <label htmlFor="outputField">Output ({this.props.status}):</label>
+                            <textarea className="form-control" id="outputField" rows="2">{this.props.content}</textarea>
                         </div>
                     </form>
                 </div>

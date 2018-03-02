@@ -22,10 +22,12 @@ import axios from "axios";
 import { API_PATH } from "../util/config";
 import { API_INFO } from "./actionTypes";
 
-export function checkInfo() {
+function checkInfo() {
     const request = axios.get(API_PATH + "/info");
     return {
         type: API_INFO,
         payload: request
     };
 }
+
+export default checkInfo;
