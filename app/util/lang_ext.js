@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/home
+ * Molan: Molan WebApp - app/util/lang_ext
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,27 +18,21 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-.editor-row {
-    height: 300px;
-    overflow-y: hidden;
+function lang_ext(language) {
+    switch (language) {
+        case "c": case "C":
+            return ".c";
+        case "cpp": case "CPP": case "C++":
+            return ".cpp";
+        case "java": case "Java":
+            return ".java";
+        case "python":
+            return ".py";
+        case "javascript":
+            return ".js";
+        default:
+            return ".txt";
+    }
 }
 
-.react-monaco-editor-container {
-    background: #fff url("/assets/img/loading.gif") no-repeat !important;
-}
-
-.monaco-menu-container {
-    background-color: #000 !important;
-}
-
-.custom-btn {
-    margin: 0 5px;
-}
-
-.btn-space {
-    padding: 30px 0;
-}
-
-textarea {
-    resize: none;
-}
+export default lang_ext;

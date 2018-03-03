@@ -23,7 +23,7 @@ Module Information:
 01. package.json
     Path: /package.json
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-02. webpack.config.json
+02. Webpack Configuration
     Path: /webpack.config.json
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 03. index.html
@@ -36,7 +36,7 @@ Module Information:
 05. index
     Path: /app/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-06. config
+06. Configuration
     Path: /app/util/config.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 07. Header
@@ -67,18 +67,27 @@ Module Information:
 14. Submit Button
     Path: /app/component/SubmitBtn/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-15. FileBtn
+15. File Button
     Path: /app/component/FileBtn/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-16. InputText
+16. Input Text Field
     Path: /app/component/InputText/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-17. OutputText
+17. Output Text Field
     Path: /app/component/OutputText/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-18. init_code
+18. Initial Code
     Path: /app/util/init_code.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
-19. cache
+19. Cache
     Path: /app/util/cache.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+20. Language Extension
+    Path: /app/util/lang_ext.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+21. Reload Button
+    Path: /app/component/ReloadBtn/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+22. Save Button
+    Path: /app/component/SaveBtn/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>

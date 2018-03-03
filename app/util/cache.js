@@ -18,19 +18,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
+export const LOCALKEY = "molan";
+
 function cache(code) {
-    console.log("localStorage: ", localStorage);
     if (typeof localStorage.molan === "undefined" || localStorage.molan === null) {
         const set = [];
-        localStorage.setItem("molan", JSON.stringify(set));
+        localStorage.setItem(LOCALKEY, JSON.stringify(set));
         return set;
-    } else {
-        if (typeof code !== "undefined" && code !== null) {
-            localStorage.setItem("molan", JSON.stringify(code));
-            return code;
-        }
-        return JSON.parse(localStorage.getItem("molan"));
     }
+    if (typeof code !== "undefined" && code !== null) {
+        localStorage.setItem(LOCALKEY, JSON.stringify(code));
+        return code;
+    }
+    return JSON.parse(localStorage.getItem(LOCALKEY));
 }
 
 export default cache;
