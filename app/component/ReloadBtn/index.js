@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/home
+ * Molan: Molan WebApp - app/component/reload_btn
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,27 +18,20 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-.editor-row {
-    height: 300px;
-    overflow-y: hidden;
+import React, { Component } from "react";
+
+class ReloadBtn extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return(
+            <button type="button" className="btn btn-outline-light btn-sm custom-btn" data-toggle="tooltip" data-placement="top" title="Reload initial code" onClick={this.props.onReload}>
+                <i className="fas fa-sync-alt"></i>
+            </button>
+        );
+    }
 }
 
-.react-monaco-editor-container {
-    background: #fff url("/assets/img/loading.gif") no-repeat !important;
-}
-
-.monaco-menu-container {
-    background-color: #000 !important;
-}
-
-.custom-btn {
-    margin: 0 5px;
-}
-
-.btn-space {
-    padding: 30px 0;
-}
-
-textarea {
-    resize: none;
-}
+export default ReloadBtn;

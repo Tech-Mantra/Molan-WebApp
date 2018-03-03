@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/file_btn
+ * Molan: Molan WebApp - app/component/save_btn
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -19,36 +19,28 @@
  */
 
 import React, { Component } from "react";
+import saveAs from "save-as";
+import lang_ext from "../../util/lang_ext";
 
-class FileBtn extends Component {
+class SaveBtn extends Component {
     constructor(props) {
         super(props);
-        this.fileBtn = null;
         this.onClick = this.onClick.bind(this);
-        this.onChange = this.onChange.bind(this);
     }
 
     render() {
         return(
-            <button type="button" className="btn btn-light custom-btn" onClick={this.onClick}>
-                Add File
-                <input type="file" accepts=".c,.cpp,.java,.js,.py" style={{ display: "none" }} ref={input => this.fileBtn = input} onChange={this.onChange}/>
+            <button type="button" className="btn btn-outline-light btn-sm custom-btn" data-toggle="tooltip" data-placement="top" title="Save to file" onClick={this.onClick}>
+                <i className="far fa-save"></i>
             </button>
         );
     }
 
     onClick(event) {
-        this.fileBtn.click();
-    }
-
-    onChange(event) {
-        const file = event.target.files[0];
-        let fileReader = new FileReader();
-        fileReader.onload = function(event) {
-            this.props.onChange(event.target.result, event);
-        }.bind(this);
-        fileReader.readAsText(file, "utf-8");
+        const blob = new Blob([this.props.code], {type: "text/plain;charset=utf-8"});
+        const fileName = `molan${lang_ext(this.props.language)}`;
+        saveAs(blob, fileName);
     }
 }
 
-export default FileBtn;
+export default SaveBtn;

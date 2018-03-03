@@ -41,6 +41,7 @@
     "react-monaco-editor": "^0.13.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "save-as": "^0.1.8"
   }
 }

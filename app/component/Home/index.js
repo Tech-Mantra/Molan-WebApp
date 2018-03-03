@@ -27,9 +27,11 @@ import Theme from "../Theme";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
 import OutputText from "../OutputText";
+import ReloadBtn from "../ReloadBtn";
+import SaveBtn from "../SaveBtn";
 import FileBtn from "../FileBtn";
 import SubmitBtn from "../SubmitBtn";
-import cache from "../../util/cache";
+import cache, { LOCALKEY } from "../../util/cache";
 import init_code from "../../util/init_code";
 import "./style.css";
 
@@ -97,15 +99,19 @@ class Home extends Component {
                 </div>
                 <div className="row align-items-center editor-row">
                     <div className="col align-self-start">
-                        <MonacoEditor height="800" language={language} theme={this.state.theme} value={code} options={options} onChange={this.onChange} editorDidMount={this.editorDidMount}
+                        <MonacoEditor height="300" language={language} theme={this.state.theme} value={code} options={options} onChange={this.onChange} editorDidMount={this.editorDidMount}
                         />
                     </div>
                 </div>
                 <div className="row align-items-end btn-space">
-                    <div className="col align-self-start">
+                    <div className="col align-self-middle">
                         <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
                     </div>
-                    <div className="col align-self-end" style={{textAlign: "right"}}>
+                    <div className="col align-self-middle" style={{textAlign: "center"}}>
+                        <ReloadBtn onReload={this.onReload}/>
+                        <SaveBtn code={code} language={language}/>
+                    </div>
+                    <div className="col align-self-start" style={{textAlign: "right"}}>
                         <FileBtn onChange={(v, e) => { this.onChange(v,e); this.forceUpdate(); }}/>
                         <SubmitBtn onSubmit={this.onSubmit}/>
                     </div>
@@ -113,13 +119,13 @@ class Home extends Component {
                 <div className="row align-items-center">
                 {
                     this.state.inputCheck &&
-                    <div className="col align-self-start">
+                    <div className="col align-self-middle">
                         <InputText defaultValue={this.input} onCustomInput={this.onCustomInput}/>
                     </div>
                 }
                 {
                     this.props.data &&
-                    <div className="col align-self-end">
+                    <div className="col align-self-middle">
                         <OutputText status={this.props.data.status} content={this.props.data.content}/>
                     </div>
                 }
