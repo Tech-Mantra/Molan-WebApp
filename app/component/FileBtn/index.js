@@ -30,8 +30,8 @@ class FileBtn extends Component {
 
     render() {
         return(
-            <button type="button" className="btn btn-light custom-btn" onClick={this.onClick}>
-                Add File
+            <button type="button" className="btn btn-outline-light btn-sm small-btn" data-toggle="tooltip" data-placement="top" title="Upload a file" onClick={this.onClick}>
+                <i className="fas fa-upload"></i>
                 <input type="file" accepts=".c,.cpp,.java,.js,.py" style={{ display: "none" }} ref={input => this.fileBtn = input} onChange={this.onChange}/>
             </button>
         );

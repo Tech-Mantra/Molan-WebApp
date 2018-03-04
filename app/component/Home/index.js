@@ -23,7 +23,7 @@ import MonacoEditor from "react-monaco-editor";
 import { connect } from "react-redux";
 import submitForm from "../../action/submitForm";
 import Language from "../Language";
-import Theme from "../Theme";
+// import Theme from "../Theme";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
 import OutputText from "../OutputText";
@@ -99,7 +99,7 @@ class Home extends Component {
                 </div>
                 <div className="row align-items-center editor-row">
                     <div className="col align-self-start">
-                        <MonacoEditor height="300" language={language} theme={this.state.theme} value={code} options={options} onChange={this.onChange} editorDidMount={this.editorDidMount}
+                        <MonacoEditor height="300" language={language} theme="vs-light" value={code} options={options} onChange={this.onChange} editorDidMount={this.editorDidMount}
                         />
                     </div>
                 </div>
@@ -107,12 +107,7 @@ class Home extends Component {
                     <div className="col align-self-middle">
                         <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
                     </div>
-                    <div className="col align-self-middle" style={{textAlign: "center"}}>
-                        <ReloadBtn onReload={this.onReload}/>
-                        <SaveBtn code={code} language={language}/>
-                    </div>
                     <div className="col align-self-start" style={{textAlign: "right"}}>
-                        <FileBtn onChange={(v, e) => { this.onChange(v,e); this.forceUpdate(); }}/>
                         <SubmitBtn onSubmit={this.onSubmit}/>
                     </div>
                 </div>
