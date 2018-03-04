@@ -27,7 +27,7 @@ class ReloadBtn extends Component {
 
     render() {
         return(
-            <button type="button" className="btn btn-outline-light btn-sm custom-btn" data-toggle="tooltip" data-placement="top" title="Reload initial code" onClick={this.props.onReload}>
+            <button type="button" className="btn btn-outline-light btn-sm small-btn" data-toggle="tooltip" data-placement="top" title="Reload initial code" onClick={this.props.onReload}>
                 <i className="fas fa-sync-alt"></i>
             </button>
         );

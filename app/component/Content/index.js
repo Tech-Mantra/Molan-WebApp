@@ -30,23 +30,24 @@ class Content extends Component {
     render() {
         switch (this.props.selectedTab) {
             case TAB_ID.HOME:
-                document.title = "Home | " + PAGE_TITLE;
+                document.title = "Home • " + PAGE_TITLE;
                 return(
                     <Home/>
                 );
             case TAB_ID.FEATURES:
-                document.title = "Features | " + PAGE_TITLE;
+                document.title = "Features • " + PAGE_TITLE;
                 return(
                     <h3>Features Available</h3>
                 );
             case TAB_ID.CONTACT:
-                document.title = "Contact | " + PAGE_TITLE;
+                document.title = "Contact • " + PAGE_TITLE;
                 return(
                     <h3>Contact Information</h3>
                 );
             default:
+                document.title = "Error • " + PAGE_TITLE;
                 return(
-                    <h3>{this.props.selectedTab}</h3>
+                    <h3>Oops! Some error occured, please reload this page.</h3>
                 );
         }
     }
