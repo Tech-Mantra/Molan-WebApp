@@ -22,7 +22,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import promiseMiddleware from 'redux-promise';
+import promiseMiddleware from "redux-promise";
 import Header from "./component/Header";
 import Content from "./component/Content";
 import Footer from "./component/Footer";

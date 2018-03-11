@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class OutputText extends Component {
     constructor(props) {
@@ -40,5 +41,10 @@ class OutputText extends Component {
         );
     }
 }
+
+OutputText.propTypes = {
+    status: PropTypes.string,
+    content: PropTypes.string
+};
 
 export default OutputText;

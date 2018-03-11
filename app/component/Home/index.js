@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import MonacoEditor from "react-monaco-editor";
 import { connect } from "react-redux";
 import submitForm from "../../action/submitForm";
@@ -59,7 +60,7 @@ class Home extends Component {
         // editor.focus();
     }
 
-    onChange(newValue, event) {
+    onChange(newValue) {
         const language = this.state.language;
         const snippet = this.code.find(e => e.language === language);
         snippet.code = newValue;
@@ -129,29 +130,29 @@ class Home extends Component {
         );
     }
 
-    onLanguageSelect(event) {
+    onLanguageSelect() {
         let newState = Object.assign({}, this.state, { language: event.target.value });
         this.setState(newState);
     }
 
-    onThemeSelect(event) {
+    onThemeSelect() {
         let newState = Object.assign({}, this.state, { theme: event.target.value });
         this.setState(newState);
     }
 
-    onFileUpload(value, event) {
-        this.onChange(value, event);
+    onFileUpload(value) {
+        this.onChange(value);
         cache(value);
         this.forceUpdate();
     }
 
-    onReload(event) {
+    onReload() {
         localStorage.removeItem(LOCALKEY);
         this.code = [];
         this.forceUpdate();
     }
 
-    onCustomInputChecked(event) {
+    onCustomInputChecked() {
         let newState = Object.assign({}, this.state, { inputCheck: !this.state.inputCheck });
         this.setState(newState);
     }
@@ -160,7 +161,7 @@ class Home extends Component {
         this.input = event.target.value;
     }
 
-    onSubmit(event) {
+    onSubmit() {
         const language = this.state.language;
         const code = this.code.find(e => e.language === language).code;
         const submitObject = {
@@ -173,6 +174,11 @@ class Home extends Component {
         this.props.submitForm(submitObject);
     }
 }
+
+Home.propTypes = {
+    data: PropTypes.object,
+    submitForm: PropTypes.func
+};
 
 const mapStateToProps = (state) => {
     return {

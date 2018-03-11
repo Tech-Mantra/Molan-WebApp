@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class SubmitBtn extends Component {
     constructor(props) {
@@ -33,5 +34,9 @@ class SubmitBtn extends Component {
         );
     }
 }
+
+SubmitBtn.propTypes = {
+    onSubmit: PropTypes.func
+};
 
 export default SubmitBtn;

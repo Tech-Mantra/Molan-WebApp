@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Language extends Component {
     constructor(props) {
@@ -44,6 +45,11 @@ class Language extends Component {
         );
     }
 }
+
+Language.propTypes = {
+    defaultValue: PropTypes.string,
+    onLanguageSelect: PropTypes.func
+};
 
 export default Language;
 

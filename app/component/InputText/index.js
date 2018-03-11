@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class InputText extends Component {
     constructor(props) {
@@ -40,5 +41,10 @@ class InputText extends Component {
         );
     }
 }
+
+InputText.propTypes = {
+    defaultValue: PropTypes.string,
+    onCustomInput: PropTypes.func
+};
 
 export default InputText;

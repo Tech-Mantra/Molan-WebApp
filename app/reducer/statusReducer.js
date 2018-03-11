@@ -31,6 +31,6 @@ const statusReducer = (state = {}, action) => {
         default:
             return state;
     }
-}
+};
 
 export default statusReducer;

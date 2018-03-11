@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class ReloadBtn extends Component {
     constructor(props) {
@@ -33,5 +34,9 @@ class ReloadBtn extends Component {
         );
     }
 }
+
+ReloadBtn.propTypes = {
+    onReload: PropTypes.func
+};
 
 export default ReloadBtn;

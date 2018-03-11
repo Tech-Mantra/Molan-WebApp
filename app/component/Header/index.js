@@ -19,8 +19,9 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { TAB_ID } from "../../util/config";
-import Navlink from "./Navlink"
+import Navlink from "./Navlink";
 
 class Header extends Component {
     constructor(props) {
@@ -44,5 +45,10 @@ class Header extends Component {
         );
     }
 }
+
+Header.propTypes = {
+    selectedTab: PropTypes.number,
+    updateTab: PropTypes.func
+};
 
 export default Header;

@@ -1,5 +1,5 @@
 const webpack = require("webpack"),
-      CopyWebpackPlugin = require('copy-webpack-plugin'),
+      CopyWebpackPlugin = require("copy-webpack-plugin"),
       path    = require("path"),
       env     = process.env,
       PACKAGE = require("./package.json"),

@@ -25,6 +25,8 @@ Module Information:
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 02. Webpack Configuration
     Path: /webpack.config.json
+          /.babelrc
+          /.eslintrc
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 03. index.html
     Path: /index.html

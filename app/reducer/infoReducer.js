@@ -28,6 +28,6 @@ const infoReducer = (state = {}, action) => {
         default:
             return state;
     }
-}
+};
 
 export default infoReducer;

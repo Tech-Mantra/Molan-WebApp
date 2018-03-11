@@ -19,8 +19,9 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { PAGE_TITLE, TAB_ID } from "../../util/config";
-import Home from "../Home"
+import Home from "../Home";
 
 class Content extends Component {
     constructor(props) {
@@ -52,5 +53,9 @@ class Content extends Component {
         }
     }
 }
+
+Content.propTypes = {
+    selectedTab: PropTypes.number
+};
 
 export default Content;

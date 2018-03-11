@@ -19,17 +19,30 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Navlink extends Component {
     constructor(props) {
         super(props);
+        this.onClick = this.onClick.bind(this);
     }
 
     render() {
         return(
-            <a className={this.props.selectedTab === this.props.currentTabID ? "nav-link active" : "nav-link"} href="#" onClick={(e)=>{this.props.updateTab(this.props.currentTabID)}}>{this.props.currentTabName}</a>
+            <a className={this.props.selectedTab === this.props.currentTabID ? "nav-link active" : "nav-link"} href="#" onClick={this.onClick}>{this.props.currentTabName}</a>
         );
     }
+
+    onClick() {
+        this.props.updateTab(this.props.currentTabID);
+    }
 }
+
+Navlink.propTypes = {
+    selectedTab: PropTypes.number,
+    currentTabID: PropTypes.number,
+    currentTabName: PropTypes.string,
+    updateTab: PropTypes.func
+};
 
 export default Navlink;

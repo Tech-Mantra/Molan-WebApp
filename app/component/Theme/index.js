@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./style.css";
 
 class Theme extends Component {
@@ -42,5 +43,10 @@ class Theme extends Component {
         );
     }
 }
+
+Theme.propTypes = {
+    defaultValue: PropTypes.string,
+    onThemeSelect: PropTypes.func
+};
 
 export default Theme;

@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Checkbox extends Component {
     constructor(props) {
@@ -36,5 +37,10 @@ class Checkbox extends Component {
         );
     }
 }
+
+Checkbox.propTypes = {
+    inputCheck: PropTypes.bool,
+    onCustomInputChecked: PropTypes.func
+};
 
 export default Checkbox;

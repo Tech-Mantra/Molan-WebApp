@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import saveAs from "save-as";
 import lang_ext from "../../util/lang_ext";
 
@@ -36,11 +37,16 @@ class SaveBtn extends Component {
         );
     }
 
-    onClick(event) {
+    onClick() {
         const blob = new Blob([this.props.code], {type: "text/plain;charset=utf-8"});
         const fileName = `molan${lang_ext(this.props.language)}`;
         saveAs(blob, fileName);
     }
 }
+
+SaveBtn.propTypes = {
+    code: PropTypes.string,
+    language: PropTypes.string
+};
 
 export default SaveBtn;

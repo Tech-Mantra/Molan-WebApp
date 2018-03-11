@@ -19,6 +19,7 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class FileBtn extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class FileBtn extends Component {
         );
     }
 
-    onClick(event) {
+    onClick() {
         this.fileBtn.click();
     }
 
@@ -45,10 +46,14 @@ class FileBtn extends Component {
         const file = event.target.files[0];
         let fileReader = new FileReader();
         fileReader.onload = function(event) {
-            this.props.onChange(event.target.result, event);
+            this.props.onChange(event.target.result);
         }.bind(this);
         fileReader.readAsText(file, "utf-8");
     }
 }
+
+FileBtn.propTypes = {
+    onChange: PropTypes.func
+};
 
 export default FileBtn;
