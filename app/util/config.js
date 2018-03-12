@@ -20,8 +20,26 @@
 
 export const API_PATH = "http://0.0.0.0:3000/api";
 export const PAGE_TITLE = "Molan: neXT Generation IDE";
-export const TAB_ID = {
-    "HOME": 0,
-    "FEATURES": 1,
-    "CONTACT": 2
+export const TAB_LIST = {
+    "HOME": {
+        "ID": 0,
+        "NAME": "Home"
+    },
+    "FEATURES": {
+        "ID": 1,
+        "NAME": "Features"
+    },
+    "CONTACT": {
+        "ID": 2,
+        "NAME": "Contact"
+    }
+};
+export const EXE_STAT = {
+    "SUCCESS": "Success",
+    "RUNTIME_ERROR": "Runtime Error",
+    "COMPILE_ERROR": "Compile Error"
+};
+export const DEFAULT_TEXT = {
+    "INPUT": "<i>No input given</i>",
+    "OUTPUT": "<i>No output to show</i>"
 };

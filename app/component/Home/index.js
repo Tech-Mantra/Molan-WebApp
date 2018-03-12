@@ -22,7 +22,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import MonacoEditor from "react-monaco-editor";
 import { connect } from "react-redux";
-import submitForm from "../../action/submitForm";
+import submitAction from "../../action/submitAction";
 import Language from "../Language";
 // import Theme from "../Theme";
 import Checkbox from "../Checkbox";
@@ -44,6 +44,7 @@ class Home extends Component {
             inputCheck: false,
             language: this.code.length > 0 ? this.code[0].language : "c"
         };
+        this.id = null;
         this.input = null;
         this.onChange = this.onChange.bind(this);
         this.onLanguageSelect = this.onLanguageSelect.bind(this);
@@ -69,7 +70,7 @@ class Home extends Component {
     }
 
     render() {
-        console.log("Home:", this.state, this.code);
+        console.log("Home:", this.state);
         const language = this.state.language;
         let code = null;
         const snippet = this.code.find(e => e.language === language);
@@ -120,9 +121,9 @@ class Home extends Component {
                     </div>
                 }
                 {
-                    this.props.data &&
+                    this.id === this.props.id  &&
                     <div className="col align-self-middle">
-                        <OutputText status={this.props.data.status} content={this.props.data.content}/>
+                        <OutputText id={this.props.id} status={this.props.status} input={this.props.input} output={this.props.output}/>
                     </div>
                 }
                 </div>
@@ -164,31 +165,38 @@ class Home extends Component {
     onSubmit() {
         const language = this.state.language;
         const code = this.code.find(e => e.language === language).code;
+        this.id = Date.now();
         const submitObject = {
-            id: Date.now(),
+            id: this.id,
             language: language,
             source: code,
             haveInput: this.state.inputCheck,
             input: this.input
         };
-        this.props.submitForm(submitObject);
+        this.props.submitAction(submitObject);
     }
 }
 
 Home.propTypes = {
-    data: PropTypes.object,
-    submitForm: PropTypes.func
+    id: PropTypes.number,
+    status: PropTypes.string,
+    input: PropTypes.string,
+    output: PropTypes.string,
+    submitAction: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = function (state) {
     return {
-        data: state.formReducer.data
+        id: state.formReducer.id,
+        status: state.formReducer.status,
+        input: state.formReducer.input,
+        output: state.formReducer.output
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = function (dispatch) {
     return {
-        submitForm: (data) => dispatch(submitForm(data))
+        submitAction: data => dispatch(submitAction(data))
     };
 };
 

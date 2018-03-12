@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/checkbox
+ * Molan: Molan WebApp - test/component/index
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,29 +18,20 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import CheckBoxTest from "./shallow/CheckBoxTest";
+// import HeaderComponentTest from "./mount/HeaderComponentTest";
+// import FileBtnTest from "./mount/FileBtnTest";
+import InputComponentTest from "./shallow/InputComponentTest";
+import LanguageComponentTest from "./shallow/LanguageComponentTest";
+import ReloadBtnTest from "./shallow/ReloadBtnTest";
+import SubmitBtnTest from "./shallow/SubmitBtnTest";
 
-class Checkbox extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return(
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" value={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
-                <label className="form-check-label" htmlFor="inputCheck">
-                Custom Input
-                </label>
-            </div>
-        );
-    }
-}
-
-Checkbox.propTypes = {
-    inputCheck: PropTypes.bool.isRequired,
-    onCustomInputChecked: PropTypes.func.isRequired
+const combinedComponentTest = {
+    CheckBoxTest:          CheckBoxTest,
+    InputComponentTest:    InputComponentTest,
+    LanguageComponentTest: LanguageComponentTest,
+    ReloadBtnTest:         ReloadBtnTest,
+    SubmitBtnTest:         SubmitBtnTest
 };
 
-export default Checkbox;
+export default combinedComponentTest;

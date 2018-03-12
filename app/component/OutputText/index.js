@@ -20,31 +20,56 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { EXE_STAT } from "../../util/config";
+import "./style.css";
 
 class OutputText extends Component {
     constructor(props) {
         super(props);
+        this.alertClassName = this.alertClassName.bind(this);
     }
 
     render() {
         return(
-            <div className="row align-items-center">
-                <div className="col">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="outputField">Output ({this.props.status}):</label>
-                            <textarea className="form-control" id="outputField" rows="2">{this.props.content}</textarea>
-                        </div>
-                    </form>
+            <div className="card">
+                <div className="card-body text-holder">
+                    <span className={this.alertClassName(this.props.status)}>
+                        <h5 className="card-title">{this.props.status}</h5>
+                    </span>
+                    <small className="align-right">{this.props.id}</small>
+                    <h6 className="card-subtitle mb-2">Custom Input</h6>
+                    <pre className="card-text d-flex p-2 border-text" id="inputText">{this.props.input || <i>No input given</i>}</pre>
+                    <h6 className="card-subtitle mb-2">Custom Output</h6>
+                    <pre className="card-text d-flex p-2 border-text" id="outputText">{this.props.output || <i>No output to show</i>}</pre>
                 </div>
             </div>
         );
     }
+
+    alertClassName(status) {
+        let alertClass;
+        switch (status) {
+            case EXE_STAT.SUCCESS:
+                alertClass = "badge badge-success";
+                break;
+            case EXE_STAT.RUNTIME_ERROR:
+                alertClass = "badge badge-danger";
+                break;
+            case EXE_STAT.COMPILE_ERROR:
+                alertClass = "badge badge-warning";
+                break;
+            default:
+                alertClass = "badge badge-info";
+        }
+        return alertClass;
+    }
 }
 
 OutputText.propTypes = {
-    status: PropTypes.string,
-    content: PropTypes.string
+    id: PropTypes.number.isRequired,
+    status: PropTypes.string.isRequired,
+    input: PropTypes.string,
+    output: PropTypes.string
 };
 
 export default OutputText;

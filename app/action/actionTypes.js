@@ -19,5 +19,14 @@
  */
 
 export const API_STATUS = "API_STATUS";
+export const API_GOOD = "Good";
+export const API_BAD = "Bad";
 export const API_INFO = "API_INFO";
+export const INFO_ERROR = "No information available";
 export const FORM_SUBMISSION = "FORM_SUBMISSION";
+export const SUBMISSION_FAILED = "Submission Failed";
+export const LOGIN_ACTION      = "LOGIN_ACTION";
+export const LOGIN_FAILURE     = "Failed to authenticate the details";
+export const LOGOUT_ACTION     = "LOGOUT_ACTION";
+export const LOGOUT_FAILURE    = "Failed to logout user from server";
+export const SIGNUP_ACTION     = "SIGNUP_ACTION";

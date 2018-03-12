@@ -20,7 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { TAB_ID } from "../../util/config";
+import { TAB_LIST } from "../../util/config";
 import Navlink from "./Navlink";
 
 class Header extends Component {
@@ -29,6 +29,7 @@ class Header extends Component {
     }
 
     render() {
+        const { selectedTab, updateTab } = this.props;
         return(
             <header className="masthead mb-auto">
                 <div className="inner">
@@ -36,9 +37,15 @@ class Header extends Component {
                         <h3>Molan</h3>
                     </button>
                     <nav className="nav nav-masthead justify-content-center">
-                        <Navlink selectedTab={this.props.selectedTab} currentTabID={TAB_ID.HOME} currentTabName="Home" updateTab={this.props.updateTab}/>
-                        <Navlink selectedTab={this.props.selectedTab} currentTabID={TAB_ID.FEATURES} currentTabName="Features" updateTab={this.props.updateTab}/>
-                        <Navlink selectedTab={this.props.selectedTab} currentTabID={TAB_ID.CONTACT} currentTabName="Contact" updateTab={this.props.updateTab}/>
+                    {
+                        function () {
+                            const NavlinkArray = [];
+                            Array.forEach(Object.values(TAB_LIST), function (item) {
+                                NavlinkArray.push(<Navlink key={item.ID} selectedTab={selectedTab} currentTabID={item.ID} currentTabName={item.NAME} updateTab={updateTab}/>);
+                            });
+                            return NavlinkArray;
+                        }()
+                    }
                     </nav>
                 </div>
             </header>
@@ -47,8 +54,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    selectedTab: PropTypes.number,
-    updateTab: PropTypes.func
+    selectedTab: PropTypes.number.isRequired,
+    updateTab: PropTypes.func.isRequired
 };
 
 export default Header;

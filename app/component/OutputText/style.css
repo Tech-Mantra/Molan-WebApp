@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/checkbox
+ * Molan: Molan WebApp - app/component/output_text
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,29 +18,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-
-class Checkbox extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return(
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" value={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
-                <label className="form-check-label" htmlFor="inputCheck">
-                Custom Input
-                </label>
-            </div>
-        );
-    }
+.text-holder {
+    background-color: #000;
 }
 
-Checkbox.propTypes = {
-    inputCheck: PropTypes.bool.isRequired,
-    onCustomInputChecked: PropTypes.func.isRequired
-};
+.badge {
+    margin-bottom: 10px;
+    padding: 2px;
+}
 
-export default Checkbox;
+.border-text {
+    border: #fff;
+    background-color: #555;
+}

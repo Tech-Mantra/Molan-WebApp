@@ -28,8 +28,9 @@ class Navlink extends Component {
     }
 
     render() {
+        const { selectedTab, currentTabID, currentTabName } = this.props;
         return(
-            <a className={this.props.selectedTab === this.props.currentTabID ? "nav-link active" : "nav-link"} href="#" onClick={this.onClick}>{this.props.currentTabName}</a>
+            <a className={selectedTab === currentTabID ? "nav-link active" : "nav-link"} href="#" onClick={this.onClick}>{currentTabName}</a>
         );
     }
 
@@ -39,10 +40,10 @@ class Navlink extends Component {
 }
 
 Navlink.propTypes = {
-    selectedTab: PropTypes.number,
-    currentTabID: PropTypes.number,
-    currentTabName: PropTypes.string,
-    updateTab: PropTypes.func
+    selectedTab: PropTypes.number.isRequired,
+    currentTabID: PropTypes.number.isRequired,
+    currentTabName: PropTypes.string.isRequired,
+    updateTab: PropTypes.func.isRequired
 };
 
 export default Navlink;

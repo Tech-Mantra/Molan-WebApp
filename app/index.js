@@ -27,7 +27,7 @@ import Header from "./component/Header";
 import Content from "./component/Content";
 import Footer from "./component/Footer";
 import reducer from "./reducer";
-import { TAB_ID } from "./util/config";
+import { TAB_LIST } from "./util/config";
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 const store = createStoreWithMiddleware(reducer);
@@ -36,7 +36,7 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: TAB_ID.HOME
+            selectedTab: TAB_LIST.HOME.ID
         };
         this.updateTab = this.updateTab.bind(this);
     }

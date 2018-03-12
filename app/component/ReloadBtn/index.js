@@ -36,7 +36,7 @@ class ReloadBtn extends Component {
 }
 
 ReloadBtn.propTypes = {
-    onReload: PropTypes.func
+    onReload: PropTypes.func.isRequired
 };
 
 export default ReloadBtn;

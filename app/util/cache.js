@@ -20,7 +20,7 @@
 
 export const LOCALKEY = "molan";
 
-function cache(code) {
+const cache = function (code) {
     if (typeof localStorage.molan === "undefined" || localStorage.molan === null) {
         const set = [];
         localStorage.setItem(LOCALKEY, JSON.stringify(set));
@@ -31,6 +31,6 @@ function cache(code) {
         return code;
     }
     return JSON.parse(localStorage.getItem(LOCALKEY)).sort((a, b) => a.timestamp < b.timestamp);
-}
+};
 
 export default cache;

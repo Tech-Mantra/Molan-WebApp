@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/checkbox
+ * Molan: Molan WebApp - test/component/submit_btn
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,29 +18,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import assert from "assert";
+import React from "react";
+import { shallow } from "enzyme";
+import { spy } from "sinon";
+import SubmitBtn from "../../../app/component/SubmitBtn";
 
-class Checkbox extends Component {
-    constructor(props) {
-        super(props);
-    }
+const fakeCallback = spy();
 
-    render() {
-        return(
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" value={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
-                <label className="form-check-label" htmlFor="inputCheck">
-                Custom Input
-                </label>
-            </div>
-        );
-    }
-}
+const SubmitBtnTest = describe("Testing Submit Button component", function () {
+    const SubmitBtnElement = shallow(<SubmitBtn onSubmit={fakeCallback}/>);
+    it("should render a button for submit", function () {
+        assert(SubmitBtnElement.find("button").length, 1);
+    });
+    it("should call the submit handler when clicked", function () {
+        SubmitBtnElement.find("button").simulate("click");
+        assert(fakeCallback.calledOnce, true);
+    });
+});
 
-Checkbox.propTypes = {
-    inputCheck: PropTypes.bool.isRequired,
-    onCustomInputChecked: PropTypes.func.isRequired
-};
-
-export default Checkbox;
+export default SubmitBtnTest;

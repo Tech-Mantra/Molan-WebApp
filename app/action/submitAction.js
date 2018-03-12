@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/checkbox
+ * Molan: Molan WebApp - app/action/submit_form
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,29 +18,18 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import axios from "axios";
+import { API_PATH } from "../util/config";
+import { FORM_SUBMISSION } from "./actionTypes";
 
-class Checkbox extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return(
-            <div className="form-check">
-                <input className="form-check-input" type="checkbox" value={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
-                <label className="form-check-label" htmlFor="inputCheck">
-                Custom Input
-                </label>
-            </div>
-        );
+function submitAction(formObject) {
+    if (typeof formObject !== "undefined" && formObject !== null) {
+        const request = axios.post(API_PATH + "/submit", formObject);
+        return {
+            type: FORM_SUBMISSION,
+            payload: request
+        };
     }
 }
 
-Checkbox.propTypes = {
-    inputCheck: PropTypes.bool.isRequired,
-    onCustomInputChecked: PropTypes.func.isRequired
-};
-
-export default Checkbox;
+export default submitAction;

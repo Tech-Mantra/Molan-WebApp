@@ -23,7 +23,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 query: {
-                    presets: ["react", "es2015", "react-hmre"]
+                    presets: ["react", "es2015"]
                 }
             },
             {
@@ -47,8 +47,8 @@ module.exports = {
         new webpack.BannerPlugin(banner),
         new CopyWebpackPlugin([
             {
-                from: 'node_modules/monaco-editor/min/vs',
-                to: 'vs',
+                from: "node_modules/monaco-editor/min/vs",
+                to: "vs",
             }
         ])
     ],
@@ -75,7 +75,7 @@ new webpack.optimize.UglifyJsPlugin({
         warnings: false
     },
     mangle: {
-        except: ['$super', '$', 'exports', 'require']
+        except: ["$super", "$", "exports", "require"]
     },
     output: {
         comments: false

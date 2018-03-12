@@ -20,13 +20,14 @@ Team Information:
 
 Module Information:
 
-01. package.json
+01. Application Configuration
     Path: /package.json
+          /.eslintrc
+          /test/*
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 02. Webpack Configuration
     Path: /webpack.config.json
           /.babelrc
-          /.eslintrc
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 03. index.html
     Path: /index.html
@@ -77,6 +78,7 @@ Module Information:
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 17. Output Text Field
     Path: /app/component/OutputText/index.js
+          /app/component/OutputText/style.css
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
 18. Initial Code
     Path: /app/util/init_code.js

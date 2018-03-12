@@ -36,7 +36,7 @@ class SubmitBtn extends Component {
 }
 
 SubmitBtn.propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func.isRequired
 };
 
 export default SubmitBtn;

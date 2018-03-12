@@ -45,8 +45,8 @@ class SaveBtn extends Component {
 }
 
 SaveBtn.propTypes = {
-    code: PropTypes.string,
-    language: PropTypes.string
+    code: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired
 };
 
 export default SaveBtn;

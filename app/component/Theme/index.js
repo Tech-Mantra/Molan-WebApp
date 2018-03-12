@@ -45,8 +45,8 @@ class Theme extends Component {
 }
 
 Theme.propTypes = {
-    defaultValue: PropTypes.string,
-    onThemeSelect: PropTypes.func
+    defaultValue: PropTypes.string.isRequired,
+    onThemeSelect: PropTypes.func.isRequired
 };
 
 export default Theme;

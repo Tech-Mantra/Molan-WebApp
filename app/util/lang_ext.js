@@ -18,7 +18,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-function lang_ext(language) {
+const lang_ext = function (language) {
     switch (language) {
         case "c": case "C":
             return ".c";
@@ -26,13 +26,13 @@ function lang_ext(language) {
             return ".cpp";
         case "java": case "Java":
             return ".java";
-        case "python":
+        case "python": case "Python":
             return ".py";
-        case "javascript":
+        case "js": case "javascript": case "Javascript":
             return ".js";
         default:
             return ".txt";
     }
-}
+};
 
 export default lang_ext;

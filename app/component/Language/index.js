@@ -33,11 +33,11 @@ class Language extends Component {
                 <div className="col-auto my-1">
                   <label className="mr-sm-2" htmlFor="SelectLang">Language</label>
                   <select className="custom-select mr-sm-2" id="SelectLang" onChange={this.props.onLanguageSelect} defaultValue={this.props.defaultValue}>
-                    <option value="c">C (STD C 99)</option>
-                    <option value="cpp">C++ (STD C++ 99)</option>
+                    <option value="c">C (GCC 5.1)</option>
+                    <option value="cpp">C++ (G++ 5.1)</option>
                     <option value="java">Java (OpenJDK 0.8)</option>
                     <option value="python">Python (Python 3.5)</option>
-                    <option value="javascript">Javascript (Node 8.9.4)</option>
+                    <option value="javascript">Javascript (Node 8.9)</option>
                   </select>
                 </div>
               </div>
@@ -48,7 +48,7 @@ class Language extends Component {
 
 Language.propTypes = {
     defaultValue: PropTypes.string,
-    onLanguageSelect: PropTypes.func
+    onLanguageSelect: PropTypes.func.isRequired
 };
 
 export default Language;

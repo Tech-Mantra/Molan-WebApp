@@ -18,13 +18,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { API_INFO } from "../action/actionTypes";
+import { API_INFO, INFO_ERROR } from "../action/actionTypes";
 
-const infoReducer = (state = {}, action) => {
+const infoReducer = function (state = {}, action) {
     switch(action.type) {
-        case API_INFO:
+        case API_INFO: {
             console.log("infoReducer: ", action);
-            return Object.assign({}, state, { info: action.payload.data });
+            const data = action.payload.data || INFO_ERROR;
+            return Object.assign({}, state, { info: data });
+        }
         default:
             return state;
     }

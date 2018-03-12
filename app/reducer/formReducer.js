@@ -18,16 +18,18 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { FORM_SUBMISSION } from "../action/actionTypes";
+import { FORM_SUBMISSION, SUBMISSION_FAILED } from "../action/actionTypes";
 
-const infoReducer = (state = {}, action) => {
+const formReducer = function (state = {}, action) {
     switch(action.type) {
-        case FORM_SUBMISSION:
+        case FORM_SUBMISSION: {
             console.log("formReducer: ", action);
-            return Object.assign({}, state, { data: action.payload.data });
+            const data = action.payload.data || { status: SUBMISSION_FAILED };
+            return Object.assign({}, state, { id: data.id, status: data.status, input: data.input, output: data.output });
+        }
         default:
             return state;
     }
 };
 
-export default infoReducer;
+export default formReducer;

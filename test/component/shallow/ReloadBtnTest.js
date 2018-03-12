@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/action/submit_form
+ * Molan: Molan WebApp - test/component/reload_btn
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,16 +18,23 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import axios from "axios";
-import { API_PATH } from "../util/config";
-import { FORM_SUBMISSION } from "./actionTypes";
+import assert from "assert";
+import React from "react";
+import { shallow } from "enzyme";
+import { spy } from "sinon";
+import ReloadBtn from "../../../app/component/ReloadBtn";
 
-function submitForm(formObject) {
-    const request = axios.post(API_PATH + "/submit", formObject);
-    return {
-        type: FORM_SUBMISSION,
-        payload: request
-    };
-}
+const fakeCallback = spy();
 
-export default submitForm;
+const ReloadBtnTest = describe("Testing Reload Button component", function () {
+    const ReloadBtnElement = shallow(<ReloadBtn onReload={fakeCallback}/>);
+    it("should render a button for reload", function () {
+        assert(ReloadBtnElement.find("button").length, 1);
+    });
+    it("should call the reload handler when clicked", function () {
+        ReloadBtnElement.find("button").simulate("click");
+        assert(fakeCallback.calledOnce, true);
+    });
+});
+
+export default ReloadBtnTest;

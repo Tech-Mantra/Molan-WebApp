@@ -14,7 +14,10 @@
         "commonjs": true,
         "es6": true
     },
-    "plugins": [ "eslint-plugin-react" ],
+    "plugins": [
+        "eslint-plugin-react",
+        "mocha"
+    ],
     "rules": {
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
@@ -22,6 +25,7 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "mocha/test"
     ]
 }

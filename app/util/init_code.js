@@ -52,7 +52,7 @@ process.stdin.setEncoding("utf8");
 // Enter your codes here
 `;
 
-function init_code(language) {
+const init_code = function (language) {
     switch (language) {
         case "c": case "C":
             return ctemp;
@@ -67,6 +67,6 @@ function init_code(language) {
         default:
             return null;
     }
-}
+};
 
 export default init_code;

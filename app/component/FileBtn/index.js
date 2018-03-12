@@ -53,7 +53,7 @@ class FileBtn extends Component {
 }
 
 FileBtn.propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func.isRequired
 };
 
 export default FileBtn;

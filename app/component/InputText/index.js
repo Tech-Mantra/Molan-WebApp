@@ -44,7 +44,7 @@ class InputText extends Component {
 
 InputText.propTypes = {
     defaultValue: PropTypes.string,
-    onCustomInput: PropTypes.func
+    onCustomInput: PropTypes.func.isRequired
 };
 
 export default InputText;

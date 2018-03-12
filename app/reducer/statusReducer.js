@@ -18,16 +18,18 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { API_STATUS } from "../action/actionTypes";
+import { API_STATUS, API_GOOD, API_BAD } from "../action/actionTypes";
 
-const statusReducer = (state = {}, action) => {
+const statusReducer = function (state = {}, action) {
     switch(action.type) {
-        case API_STATUS:
+        case API_STATUS: {
             console.log("statusReducer: ", action);
+            const status = action.payload.status === 200 ? API_GOOD : API_BAD;
             return Object.assign({}, state, {
-                status: action.payload.status === 200 ? "Good" : "Bad",
+                status: status,
                 code: action.payload.status
             });
+        }
         default:
             return state;
     }
