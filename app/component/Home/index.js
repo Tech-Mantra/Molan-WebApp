@@ -131,12 +131,12 @@ class Home extends Component {
         );
     }
 
-    onLanguageSelect() {
+    onLanguageSelect(event) {
         let newState = Object.assign({}, this.state, { language: event.target.value });
         this.setState(newState);
     }
 
-    onThemeSelect() {
+    onThemeSelect(event) {
         let newState = Object.assign({}, this.state, { theme: event.target.value });
         this.setState(newState);
     }

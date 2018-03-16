@@ -29,7 +29,7 @@ class Footer extends Component {
     constructor(props) {
         super(props);
         this.status = "Loading";
-        this.info = "No information available";
+        this.info = "Loading";
         this.reloadStatus = this.reloadStatus.bind(this);
     }
 
