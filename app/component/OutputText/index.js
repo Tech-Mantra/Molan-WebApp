@@ -36,6 +36,7 @@ class OutputText extends Component {
                     <span className={this.alertClassName(this.props.status)}>
                         <h5 className="card-title">{this.props.status}</h5>
                     </span>
+                    <small className="align-right">{this.props.id}</small>
                     <h6 className="card-subtitle mb-2">Custom Input</h6>
                     <pre className="card-text d-flex p-2 border-text" id="inputText">{this.props.input || <i>No input given</i>}</pre>
                     <h6 className="card-subtitle mb-2">Custom Output</h6>

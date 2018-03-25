@@ -37,7 +37,8 @@ int main() {
 `import java.io.*;
 import java.util.*;
 
-public class Molan {
+/* Do not change the class name */
+class Molan {
     public static void main(String[] args) {
         // Your codes here
     }
