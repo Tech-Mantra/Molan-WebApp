@@ -74,14 +74,14 @@ Footer.propTypes = {
 const mapStateToProps = function (state) {
     return {
         status: state.statusReducer.status,
-        info: state.infoReducer.info
+        info:   state.infoReducer.info
     };
 };
 
 const mapDispatchToProps = function (dispatch) {
     return {
         checkStatus: () => dispatch(checkStatus()),
-        checkInfo: () => dispatch(checkInfo())
+        checkInfo:   () => dispatch(checkInfo())
     };
 };
 

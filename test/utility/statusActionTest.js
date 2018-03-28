@@ -25,7 +25,7 @@ import checkStatus from "../../app/action/statusAction";
 const statusActionTest = describe("Checking API Status", function () {
     context("API is running", function () {
         it("should have valid checkStatus action", function () {
-            assert(typeof checkStatus ,"function");
+            assert(typeof checkStatus, "function");
         });
         const action = checkStatus();
         it("should call checkStatus action", function () {

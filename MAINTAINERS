@@ -95,3 +95,10 @@ Module Information:
 22. Save Button
     Path: /app/component/SaveBtn/index.js
     Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+23. Login Form
+    Path: /app/component/LoginForm/index.js
+          /app/component/LoginForm/style.css
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>
+24. Email Button
+    Path: /app/component/EmailBtn/index.js
+    Maintainer: Progyan Bhattacharya <progyanb@acm.org>

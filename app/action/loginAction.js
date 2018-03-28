@@ -20,7 +20,7 @@
 
 import axios from "axios";
 import { API_PATH } from "../util/config";
-import { LOGIN_ACTION, LOGOUT_ACTION, SIGNUP_ACTION } from "./actionTypes";
+import { LOGIN_ACTION, LOGOUT_ACTION, SIGNUP_ACTION, SAVE_TEMPLATE } from "./actionTypes";
 
 const LOCAL_KEY = "MOLAN_USER_AUTH";
 
@@ -77,6 +77,10 @@ function signupAction(data) {
         type: SIGNUP_ACTION,
         payload: request
     };
+}
+
+export function saveTemplate(user, code) {
+    console.log(SAVE_TEMPLATE, user, code);
 }
 
 export default userAuth;

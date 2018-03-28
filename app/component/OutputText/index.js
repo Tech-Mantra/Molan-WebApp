@@ -30,6 +30,7 @@ class OutputText extends Component {
     }
 
     render() {
+        console.log("OutputText: ", this.props);
         return(
             <div className="card">
                 <div className="card-body text-holder">
@@ -66,9 +67,9 @@ class OutputText extends Component {
 }
 
 OutputText.propTypes = {
-    id: PropTypes.number.isRequired,
-    status: PropTypes.string.isRequired,
-    input: PropTypes.string,
+    id:     PropTypes.number,
+    status: PropTypes.string,
+    input:  PropTypes.string,
     output: PropTypes.string
 };
 

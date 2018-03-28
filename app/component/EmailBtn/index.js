@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/input_text
+ * Molan: Molan WebApp - app/component/email_btn
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -21,30 +21,27 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class InputText extends Component {
+class EmailBtn extends Component {
     constructor(props) {
         super(props);
+        this.onClick = this.onClick.bind(this);
     }
 
     render() {
         return(
-            <div className="row align-items-center">
-                <div className="col">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="inputField">Enter your input here</label>
-                            <textarea className="form-control" id="inputField" rows="2" onChange={this.props.onCustomInput}>{this.props.defaultValue}</textarea>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <button type="button" className="btn btn-outline-light btn-sm small-btn" data-toggle="tooltip" data-placement="top" title="Mail the code" onClick={this.onClick}>
+                <i className="far fa-envelop"></i>
+            </button>
         );
+    }
+
+    onClick() {
+        console.log("Not Implemented yet.");
     }
 }
 
-InputText.propTypes = {
-    defaultValue:  PropTypes.string,
-    onCustomInput: PropTypes.func.isRequired
+EmailBtn.propTypes = {
+    email: PropTypes.string.isRequired
 };
 
-export default InputText;
+export default EmailBtn;

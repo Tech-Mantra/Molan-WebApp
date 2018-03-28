@@ -28,6 +28,7 @@ import Language from "../Language";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
 import OutputText from "../OutputText";
+import EmailBtn from "../EmailBtn";
 import ReloadBtn from "../ReloadBtn";
 import SaveBtn from "../SaveBtn";
 import FileBtn from "../FileBtn";
@@ -94,6 +95,9 @@ class Home extends Component {
                         <Language defaultValue={this.state.language} onLanguageSelect={this.onLanguageSelect}/>
                     </div>
                     <div className="col align-self-end" style={{ textAlign: "right" }}>
+                        {
+                            this.props.login && <EmailBtn email={this.props.user}/>
+                        }
                         <FileBtn onChange={this.onFileUpload}/>
                         <ReloadBtn onReload={this.onReload}/>
                         <SaveBtn code={code} language={language}/>
@@ -113,7 +117,7 @@ class Home extends Component {
                         <SubmitBtn onSubmit={this.onSubmit}/>
                     </div>
                 </div>
-                <div className="row align-items-center">
+                <div className="row align-items-start">
                 {
                     this.state.inputCheck &&
                     <div className="col align-self-middle">
@@ -163,33 +167,41 @@ class Home extends Component {
     }
 
     onSubmit() {
-        const language = this.state.language;
+        const { language } = this.state; 
         const code = this.code.find(e => e.language === language).code;
         this.id = Date.now();
         const submitObject = {
-            id: this.id,
-            language: language,
-            source: code,
+            id:        this.id,
+            language:  language,
+            source:    code,
             haveInput: this.state.inputCheck,
-            input: this.input
+            input:     this.input
         };
+        if (typeof this.props.user === "string") {
+            submitObject.username = this.props.user;
+        }
         this.props.submitAction(submitObject);
+        this.setState({ inputCheck: false });
     }
 }
 
 Home.propTypes = {
-    id: PropTypes.number,
-    status: PropTypes.string,
-    input: PropTypes.string,
-    output: PropTypes.string,
+    login:        PropTypes.bool,
+    user:         PropTypes.string,
+    id:           PropTypes.number,
+    status:       PropTypes.string,
+    input:        PropTypes.string,
+    output:       PropTypes.string,
     submitAction: PropTypes.func
 };
 
 const mapStateToProps = function (state) {
     return {
-        id: state.formReducer.id,
+        login:  state.loginReducer.loggedIn,
+        user:   state.loginReducer.username,
+        id:     state.formReducer.id,
         status: state.formReducer.status,
-        input: state.formReducer.input,
+        input:  state.formReducer.input,
         output: state.formReducer.output
     };
 };

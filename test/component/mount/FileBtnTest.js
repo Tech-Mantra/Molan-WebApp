@@ -24,8 +24,8 @@ import { shallow } from "enzyme";
 import { spy } from "sinon";
 import FileBtn from "../../../app/component/FileBtn";
 
-const fakeCallback = spy();
-    //   clickHandler = spy(FileBtn.prototype, "onClick");
+const fakeCallback = spy(),
+      clickHandler = spy(FileBtn.prototype, "onClick");
 
 const FileBtnTest = describe("Testing File Button component", function () {
     const FileBtnElement = shallow(<FileBtn onChange={fakeCallback}/>);

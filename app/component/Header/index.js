@@ -55,7 +55,7 @@ class Header extends Component {
 
 Header.propTypes = {
     selectedTab: PropTypes.number.isRequired,
-    updateTab: PropTypes.func.isRequired
+    updateTab:   PropTypes.func.isRequired
 };
 
 export default Header;

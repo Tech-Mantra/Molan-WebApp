@@ -21,12 +21,14 @@
 import { combineReducers } from "redux";
 import statusReducer from "./statusReducer";
 import infoReducer from "./infoReducer";
+import loginReducer from "./loginReducer";
 import formReducer from "./formReducer";
 
 const reducer = combineReducers({
-    statusReducer,
-    infoReducer,
-    formReducer
+    statusReducer: statusReducer,
+    infoReducer:   infoReducer,
+    loginReducer:  loginReducer,
+    formReducer:   formReducer
 });
 
 export default reducer;

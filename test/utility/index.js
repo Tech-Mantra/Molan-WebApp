@@ -21,17 +21,21 @@
 import formReducerTest from "./formReducerTest";
 import infoActionTest from "./infoActionTest";
 import infoReducerTest from "./infoReducerTest";
+import loginActionTest from "./loginActionTest";
+import loginReducerTest from "./loginReducerTest";
 import statusActionTest from "./statusActionTest";
 import statusReducerTest from "./statusReducerTest";
 import submitActionTest from "./submitActionTest";
 
 const combinedUtilTest = {
-    formReducerTest: formReducerTest,
-    infoActionTest: infoActionTest,
-    infoReducerTest: infoReducerTest,
-    statusActionTest: statusActionTest,
+    formReducerTest:   formReducerTest,
+    infoActionTest:    infoActionTest,
+    infoReducerTest:   infoReducerTest,
+    loginActionTest:   loginActionTest,
+    loginReducerTest:  loginReducerTest,
+    statusActionTest:  statusActionTest,
     statusReducerTest: statusReducerTest,
-    submitActionTest: submitActionTest
+    submitActionTest:  submitActionTest
 };
 
 export default combinedUtilTest;

@@ -29,7 +29,7 @@ class Checkbox extends Component {
     render() {
         return(
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" value={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
+                <input className="form-check-input" type="checkbox" checked={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
                 <label className="form-check-label" htmlFor="inputCheck">
                 Custom Input
                 </label>
@@ -39,7 +39,7 @@ class Checkbox extends Component {
 }
 
 Checkbox.propTypes = {
-    inputCheck: PropTypes.bool.isRequired,
+    inputCheck:           PropTypes.bool.isRequired,
     onCustomInputChecked: PropTypes.func.isRequired
 };
 

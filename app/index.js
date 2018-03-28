@@ -23,8 +23,10 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import promiseMiddleware from "redux-promise";
+import { reloginAction } from "./action/loginAction";
 import Header from "./component/Header";
 import Content from "./component/Content";
+import LoginForm from "./component/LoginForm";
 import Footer from "./component/Footer";
 import reducer from "./reducer";
 import { TAB_LIST } from "./util/config";
@@ -32,11 +34,14 @@ import { TAB_LIST } from "./util/config";
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 const store = createStoreWithMiddleware(reducer);
 
+reloginAction();
+
 class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: TAB_LIST.HOME.ID
+            selectedTab: TAB_LIST.HOME.ID,
+            showModal: false
         };
         this.updateTab = this.updateTab.bind(this);
     }
@@ -47,13 +52,19 @@ class Index extends Component {
             <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
                 <Header selectedTab={this.state.selectedTab} updateTab={this.updateTab}/>
                 <Content selectedTab={this.state.selectedTab}/>
+                <LoginForm showModal={this.state.showModal} closeModal={() => {this.updateTab(TAB_LIST.LOGIN.ID);}}/>
                 <Footer/>
             </div>
         );
     }
 
     updateTab(newTab) {
-        let newState = Object.assign({}, this.state, { selectedTab: newTab });
+        let newState = Object.assign({}, this.state);
+        if (newTab === TAB_LIST.LOGIN.ID) {
+            newState.showModal = ! this.state.showModal;
+        } else {
+            newState.selectedTab = newTab;
+        }
         this.setState(newState);
     }
 }

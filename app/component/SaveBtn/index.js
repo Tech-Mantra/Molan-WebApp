@@ -38,14 +38,14 @@ class SaveBtn extends Component {
     }
 
     onClick() {
-        const blob = new Blob([this.props.code], {type: "text/plain;charset=utf-8"});
+        const blob = new Blob([this.props.code], {type: "text/plain;charset=ascii"});
         const fileName = `molan${lang_ext(this.props.language)}`;
         saveAs(blob, fileName);
     }
 }
 
 SaveBtn.propTypes = {
-    code: PropTypes.string.isRequired,
+    code:     PropTypes.string.isRequired,
     language: PropTypes.string.isRequired
 };
 

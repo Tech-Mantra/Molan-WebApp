@@ -40,10 +40,10 @@ class Navlink extends Component {
 }
 
 Navlink.propTypes = {
-    selectedTab: PropTypes.number.isRequired,
-    currentTabID: PropTypes.number.isRequired,
+    selectedTab:    PropTypes.number.isRequired,
+    currentTabID:   PropTypes.number.isRequired,
     currentTabName: PropTypes.string.isRequired,
-    updateTab: PropTypes.func.isRequired
+    updateTab:      PropTypes.func.isRequired
 };
 
 export default Navlink;

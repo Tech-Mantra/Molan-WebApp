@@ -47,7 +47,7 @@ class Language extends Component {
 }
 
 Language.propTypes = {
-    defaultValue: PropTypes.string,
+    defaultValue:     PropTypes.string.isRequired,
     onLanguageSelect: PropTypes.func.isRequired
 };
 

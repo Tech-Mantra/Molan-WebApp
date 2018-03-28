@@ -32,14 +32,14 @@ export const TAB_LIST = {
     "CONTACT": {
         "ID": 2,
         "NAME": "Contact"
+    },
+    "LOGIN": {
+        "ID": 3,
+        "NAME": "Login"
     }
 };
 export const EXE_STAT = {
     "SUCCESS": "Success",
     "RUNTIME_ERROR": "Runtime Error",
     "COMPILE_ERROR": "Compile Error"
-};
-export const DEFAULT_TEXT = {
-    "INPUT": "<i>No input given</i>",
-    "OUTPUT": "<i>No output to show</i>"
 };
