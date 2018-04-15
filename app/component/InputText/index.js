@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 
 class InputText extends Component {
     constructor(props) {
@@ -32,8 +33,15 @@ class InputText extends Component {
                 <div className="col">
                     <form>
                         <div className="form-group">
-                            <label htmlFor="inputField">Enter your input here</label>
-                            <textarea className="form-control" id="inputField" rows="2" onChange={this.props.onCustomInput}>{this.props.defaultValue}</textarea>
+                            <label htmlFor="inputField">
+                                Enter your input here
+                            </label>
+                            <textarea className="form-control"
+                             id="inputField"
+                             rows="2"
+                             value={this.props.value}
+                             onChange={this.props.onCustomInput}>
+                            </textarea>
                         </div>
                     </form>
                 </div>
@@ -43,8 +51,13 @@ class InputText extends Component {
 }
 
 InputText.propTypes = {
-    defaultValue:  PropTypes.string,
+    value:         PropTypes.string.isRequired,
     onCustomInput: PropTypes.func.isRequired
+};
+
+InputText.defaultProps = {
+    value:         "",
+    onCustomInput: noop
 };
 
 export default InputText;

@@ -21,7 +21,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware, dispatch } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import promiseMiddleware from "redux-promise";
 import { reloginAction } from "./action/loginAction";
 import Header from "./component/Header";
@@ -31,7 +31,8 @@ import Footer from "./component/Footer";
 import reducer from "./reducer";
 import { TAB_LIST } from "./util/config";
 
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
+const createStoreWithMiddleware =
+    applyMiddleware(promiseMiddleware)(createStore);
 const store = createStoreWithMiddleware(reducer);
 
 store.dispatch(reloginAction());

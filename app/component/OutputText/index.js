@@ -39,30 +39,35 @@ class OutputText extends Component {
                     </span>
                     <small className="align-right">{this.props.id}</small>
                     <h6 className="card-subtitle mb-2">Custom Input</h6>
-                    <pre className="card-text d-flex p-2 border-text" id="inputText">{this.props.input || <i>No input given</i>}</pre>
+                    <pre className="card-text d-flex p-2 border-text"
+                     id="inputText">
+                        {this.props.input || <i>No input given</i>}
+                    </pre>
                     <h6 className="card-subtitle mb-2">Custom Output</h6>
-                    <pre className="card-text d-flex p-2 border-text" id="outputText">{this.props.output || <i>No output to show</i>}</pre>
+                    <pre className="card-text d-flex p-2 border-text"
+                     id="outputText">
+                        {this.props.output || <i>No output to show</i>}
+                    </pre>
                 </div>
             </div>
         );
     }
 
     alertClassName(status) {
-        let alertClass;
         switch (status) {
-            case EXE_STAT.SUCCESS:
-                alertClass = "badge badge-success";
-                break;
-            case EXE_STAT.RUNTIME_ERROR:
-                alertClass = "badge badge-danger";
-                break;
-            case EXE_STAT.COMPILE_ERROR:
-                alertClass = "badge badge-warning";
-                break;
-            default:
-                alertClass = "badge badge-info";
+            case EXE_STAT.SUCCESS: {
+                return "badge badge-success";
+            }
+            case EXE_STAT.RUNTIME_ERROR: {
+                return "badge badge-danger";
+            }
+            case EXE_STAT.COMPILE_ERROR: {
+                return "badge badge-warning";
+            }
+            default: {
+                return "badge badge-info";
+            }
         }
-        return alertClass;
     }
 }
 

@@ -18,32 +18,29 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
+import "babel-polyfill";
 import assert from "assert";
-import React from "react";
-import { shallow } from "enzyme";
 import { spy } from "sinon";
-import HeaderComponent from "../../app/component/Header";
+import renderComponent from "./renderComponent";
+import HeaderComponent from "../../../app/component/Header";
 
 const fakeCallback = spy();
 
-if (typeof Object.prototype.values !== "function") {
-    Object.prototype.values = function(item, cb) {
-        return Object.keys(item).map(function (x) {
-            if (typeof cb === "function") {
-                cb(item[x]);
-            }
-            return item[x];
-        });
-    };
-}
+const HeaderComponentTest = describe("Testing Header component",
+    function () {
 
-const HeaderComponentTest = describe("Testing Header component", function () {
-    const HeaderElement = shallow(<HeaderComponent selectedTab={0} updateTab={fakeCallback}/>);
+    const HeaderElement = renderComponent(HeaderComponent, {
+        updateTab: fakeCallback
+    });
     it("should render three 'Navlink' element", function () {
         assert(HeaderElement.find("Navlink").length, 3);
     });
+    it("should select default Tab", function () {
+        assert(HeaderElement.find("Navlink").first().props()
+            .selectedTab === 0);
+    });
     it("should call the handler when clicked", function () {
-        HeaderElement.find("Navlink")[0].simulate("click");
+        HeaderElement.find("Navlink").first().simulate("click");
         assert(fakeCallback.calledOnce, true);
     });
 });

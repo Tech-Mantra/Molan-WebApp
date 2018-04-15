@@ -43,7 +43,6 @@ function userAuth(event, object) {
 }
 
 function loginHelper(auth) {
-    console.log("called");
     const request = axios.post(API_PATH + "/login", null, {
         headers: {
             Authorization: "Basic " + auth

@@ -19,12 +19,10 @@
  */
 
 import {
-    LOGIN_ACTION, LOGIN_FAILURE, LOGOUT_ACTION, LOGOUT_FAILURE,
-    SIGNUP_ACTION
+    LOGIN_ACTION, LOGIN_FAILURE, LOGOUT_ACTION, LOGOUT_FAILURE, SIGNUP_ACTION
 } from "../action/actionTypes";
 
 const loginReducer = function (state = {}, action) {
-    // console.log(action);
     switch (action.type) {
         case LOGIN_ACTION:
         case SIGNUP_ACTION: {

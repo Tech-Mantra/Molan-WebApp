@@ -10,7 +10,7 @@
     "lint:app": "eslint app/",
     "lint:test": "eslint test/",
     "lint": "npm run lint:app && npm run lint:test",
-    "test:app": "mocha --compilers js:babel-register test/component/index.js --require test/setup.js --require ignore-styles",
+    "test:app": "mocha --compilers js:babel-register test/component/index.js --require test/component/setup.js --require ignore-styles",
     "test:util": "mocha --compilers js:babel-register test/utility/index.js",
     "test": "npm run test:app && npm run test:util"
   },
@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash": "^4.17.5",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -54,6 +55,7 @@
   },
   "optionalDependencies": {
     "babel-eslint": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",

@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 
 class Language extends Component {
     constructor(props) {
@@ -31,8 +32,13 @@ class Language extends Component {
             <form>
               <div className="form-row align-items-center">
                 <div className="col-auto my-1">
-                  <label className="mr-sm-2" htmlFor="SelectLang">Language</label>
-                  <select className="custom-select mr-sm-2" id="SelectLang" onChange={this.props.onLanguageSelect} defaultValue={this.props.defaultValue}>
+                  <label className="mr-sm-2" htmlFor="SelectLang">
+                      Language
+                  </label>
+                  <select className="custom-select mr-sm-2"
+                   id="SelectLang"
+                   onChange={this.props.onLanguageSelect}
+                   defaultValue={this.props.defaultValue}>
                     <option value="c">C (GCC 6.3)</option>
                     <option value="cpp">C++ (GCC 6.3)</option>
                     <option value="java">Java (OpenJDK 0.8)</option>
@@ -49,6 +55,11 @@ class Language extends Component {
 Language.propTypes = {
     defaultValue:     PropTypes.string.isRequired,
     onLanguageSelect: PropTypes.func.isRequired
+};
+
+Language.defaultProps = {
+    defaultValue:     "c",
+    onLanguageSelect: noop
 };
 
 export default Language;

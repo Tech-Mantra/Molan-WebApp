@@ -24,7 +24,6 @@ import MonacoEditor from "react-monaco-editor";
 import { connect } from "react-redux";
 import submitAction from "../../action/submitAction";
 import Language from "../Language";
-// import Theme from "../Theme";
 import Checkbox from "../Checkbox";
 import InputText from "../InputText";
 import OutputText from "../OutputText";
@@ -40,21 +39,23 @@ import "./style.css";
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.code = cache();
+        this.code  = cache();
         this.state = {
             inputCheck: false,
-            language: this.code.length > 0 ? this.code[0].language : "c"
+            input:      "",
+            language:   this.code.length > 0 ?
+                        this.code[0].language :
+                        "c"
         };
-        this.id = null;
-        this.input = null;
-        this.onChange = this.onChange.bind(this);
-        this.onLanguageSelect = this.onLanguageSelect.bind(this);
-        this.onThemeSelect = this.onThemeSelect.bind(this);
-        this.onFileUpload = this.onFileUpload.bind(this);
-        this.onReload = this.onReload.bind(this);
+        this.id                   = null;
+        this.input                = "";
+        this.onChange             = this.onChange.bind(this);
+        this.onLanguageSelect     = this.onLanguageSelect.bind(this);
+        this.onFileUpload         = this.onFileUpload.bind(this);
+        this.onReload             = this.onReload.bind(this);
         this.onCustomInputChecked = this.onCustomInputChecked.bind(this);
-        this.onCustomInput = this.onCustomInput.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.onCustomInput        = this.onCustomInput.bind(this);
+        this.onSubmit             = this.onSubmit.bind(this);
     }
 
     editorDidMount(editor, monaco) {
@@ -71,7 +72,6 @@ class Home extends Component {
     }
 
     render() {
-        console.log("Home:", this.state);
         const language = this.state.language;
         let code = null;
         const snippet = this.code.find(e => e.language === language);
@@ -89,14 +89,20 @@ class Home extends Component {
             selectOnLineNumbers: true
         };
         return(
-            <main role="main" className="inner" style={{textAlign: "justify"}}>
+            <main className="inner"
+            role="main"
+             style={{textAlign: "justify"}}>
                 <div className="row align-items-start">
                     <div className="col align-self-start">
-                        <Language defaultValue={this.state.language} onLanguageSelect={this.onLanguageSelect}/>
+                        <Language
+                         defaultValue={this.state.language}
+                         onLanguageSelect={this.onLanguageSelect}/>
                     </div>
-                    <div className="col align-self-end" style={{ textAlign: "right" }}>
+                    <div className="col align-self-end"
+                     style={{ textAlign: "right" }}>
                         {
-                            this.props.login && <EmailBtn email={this.props.user}/>
+                            this.props.login &&
+                            <EmailBtn email={this.props.user}/>
                         }
                         <FileBtn onChange={this.onFileUpload}/>
                         <ReloadBtn onReload={this.onReload}/>
@@ -105,15 +111,24 @@ class Home extends Component {
                 </div>
                 <div className="row align-items-center editor-row">
                     <div className="col align-self-start">
-                        <MonacoEditor height="300" language={language} theme="vs-light" value={code} options={options} onChange={this.onChange} editorDidMount={this.editorDidMount}
+                        <MonacoEditor height="300"
+                         language={language}
+                         theme="vs-light"
+                         value={code}
+                         options={options}
+                         onChange={this.onChange}
+                         editorDidMount={this.editorDidMount}
                         />
                     </div>
                 </div>
                 <div className="row align-items-end btn-space">
                     <div className="col align-self-middle">
-                        <Checkbox inputCheck={this.state.inputCheck} onCustomInputChecked={this.onCustomInputChecked}/>
+                        <Checkbox
+                         inputCheck={this.state.inputCheck}
+                         onCustomInputChecked={this.onCustomInputChecked}/>
                     </div>
-                    <div className="col align-self-start" style={{textAlign: "right"}}>
+                    <div className="col align-self-start"
+                     style={{textAlign: "right"}}>
                         <SubmitBtn onSubmit={this.onSubmit}/>
                     </div>
                 </div>
@@ -121,13 +136,19 @@ class Home extends Component {
                 {
                     this.state.inputCheck &&
                     <div className="col align-self-middle">
-                        <InputText defaultValue={this.input} onCustomInput={this.onCustomInput}/>
+                        <InputText
+                         value={this.state.input}
+                         onCustomInput={this.onCustomInput}/>
                     </div>
                 }
                 {
                     this.id === this.props.id  &&
                     <div className="col align-self-middle">
-                        <OutputText id={this.props.id} status={this.props.status} input={this.props.input} output={this.props.output}/>
+                        <OutputText
+                         id={this.props.id}
+                         status={this.props.status}
+                         input={this.props.input}
+                         output={this.props.output}/>
                     </div>
                 }
                 </div>
@@ -136,12 +157,9 @@ class Home extends Component {
     }
 
     onLanguageSelect(event) {
-        let newState = Object.assign({}, this.state, { language: event.target.value });
-        this.setState(newState);
-    }
-
-    onThemeSelect(event) {
-        let newState = Object.assign({}, this.state, { theme: event.target.value });
+        let newState = Object.assign({}, this.state, {
+            language: event.target.value
+        });
         this.setState(newState);
     }
 
@@ -152,22 +170,29 @@ class Home extends Component {
     }
 
     onReload() {
-        localStorage.removeItem(LOCALKEY);
+        if (typeof localStorage !== "undefined") {
+            localStorage.removeItem(LOCALKEY);
+        }
         this.code = [];
         this.forceUpdate();
     }
 
     onCustomInputChecked() {
-        let newState = Object.assign({}, this.state, { inputCheck: !this.state.inputCheck });
+        let newState = Object.assign({}, this.state, {
+            inputCheck: ! this.state.inputCheck
+        });
         this.setState(newState);
     }
 
     onCustomInput(event) {
-        this.input = event.target.value;
+        let newState = Object.assign({}, this.state, {
+            input: event.target.value
+        });
+        this.setState(newState);
     }
 
     onSubmit() {
-        const { language } = this.state; 
+        const { language } = this.state;
         const code = this.code.find(e => e.language === language).code;
         this.id = Date.now();
         const submitObject = {
@@ -175,7 +200,7 @@ class Home extends Component {
             language:  language,
             source:    code,
             haveInput: this.state.inputCheck,
-            input:     this.input
+            input:     this.state.input
         };
         if (typeof this.props.user === "string") {
             submitObject.username = this.props.user;

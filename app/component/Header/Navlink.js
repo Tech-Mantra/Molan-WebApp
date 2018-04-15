@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 
 class Navlink extends Component {
     constructor(props) {
@@ -29,8 +30,15 @@ class Navlink extends Component {
 
     render() {
         const { selectedTab, currentTabID, currentTabName } = this.props;
+        const anchorClass = selectedTab === currentTabID ?
+                            "nav-link active" :
+                            "nav-link";
         return(
-            <a className={selectedTab === currentTabID ? "nav-link active" : "nav-link"} href="#" onClick={this.onClick}>{currentTabName}</a>
+            <a className={anchorClass}
+             href="#"
+             onClick={this.onClick}>
+                {currentTabName}
+            </a>
         );
     }
 
@@ -44,6 +52,11 @@ Navlink.propTypes = {
     currentTabID:   PropTypes.number.isRequired,
     currentTabName: PropTypes.string.isRequired,
     updateTab:      PropTypes.func.isRequired
+};
+
+Navlink.defaultProps = {
+    selectedTab: 0,
+    updateTab:   noop
 };
 
 export default Navlink;

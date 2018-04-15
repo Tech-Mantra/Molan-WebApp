@@ -26,7 +26,9 @@ import ReloadBtn from "../../../app/component/ReloadBtn";
 
 const fakeCallback = spy();
 
-const ReloadBtnTest = describe("Testing Reload Button component", function () {
+const ReloadBtnTest = describe("Testing Reload Button component",
+    function () {
+
     const ReloadBtnElement = shallow(<ReloadBtn onReload={fakeCallback}/>);
     it("should render a button for reload", function () {
         assert(ReloadBtnElement.find("button").length, 1);

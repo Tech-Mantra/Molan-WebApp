@@ -21,7 +21,10 @@
 export const LOCALKEY = "molan";
 
 const cache = function (code) {
-    if (typeof localStorage.molan === "undefined" || localStorage.molan === null) {
+    if (typeof localStorage !== "object") {
+        return [];
+    }
+    if (typeof localStorage.getItem(LOCALKEY) === "undefined" || localStorage.getItem(LOCALKEY) === null) {
         const set = [];
         localStorage.setItem(LOCALKEY, JSON.stringify(set));
         return set;
@@ -30,7 +33,8 @@ const cache = function (code) {
         localStorage.setItem(LOCALKEY, JSON.stringify(code));
         return code;
     }
-    return JSON.parse(localStorage.getItem(LOCALKEY)).sort((a, b) => a.timestamp < b.timestamp);
+    return JSON.parse(localStorage.getItem(LOCALKEY))
+            .sort((a, b) => a.timestamp < b.timestamp);
 };
 
 export default cache;

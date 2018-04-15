@@ -26,7 +26,9 @@ import SubmitBtn from "../../../app/component/SubmitBtn";
 
 const fakeCallback = spy();
 
-const SubmitBtnTest = describe("Testing Submit Button component", function () {
+const SubmitBtnTest = describe("Testing Submit Button component",
+    function () {
+
     const SubmitBtnElement = shallow(<SubmitBtn onSubmit={fakeCallback}/>);
     it("should render a button for submit", function () {
         assert(SubmitBtnElement.find("button").length, 1);

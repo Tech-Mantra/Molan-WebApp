@@ -29,7 +29,12 @@ class EmailBtn extends Component {
 
     render() {
         return(
-            <button type="button" className="btn btn-outline-light btn-sm small-btn" data-toggle="tooltip" data-placement="top" title="Mail the code" onClick={this.onClick}>
+            <button type="button"
+             className="btn btn-outline-light btn-sm small-btn"
+             data-toggle="tooltip"
+             data-placement="top"
+             title="Mail the code"
+             onClick={this.onClick}>
                 <i className="far fa-envelop"></i>
             </button>
         );

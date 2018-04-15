@@ -20,16 +20,16 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 import { connect } from "react-redux";
+import { INFO_ERROR } from "../../action/actionTypes";
 import checkStatus from "../../action/statusAction";
 import checkInfo from "../../action/infoAction";
 import "./style.css";
 
-class Footer extends Component {
+export class Footer extends Component {
     constructor(props) {
         super(props);
-        this.status = "Loading";
-        this.info = "Loading";
         this.reloadStatus = this.reloadStatus.bind(this);
     }
 
@@ -39,18 +39,29 @@ class Footer extends Component {
     }
 
     render() {
-        if (typeof this.props.status !== "undefined" && this.props.status !== null) {
-            this.status = this.props.status;
-        }
-        if (typeof this.props.info !== "undefined" && this.props.info !== null) {
-            this.info = this.props.info;
-        }
+        const labelClass = this.props.status === "Good" ?
+                           "mb-2 bg-success text-white round-border" :
+                           "mb-2 bg-danger text-white round-border";
         return(
             <footer className="mastfoot mt-auto">
                 <div className="inner footer-bottom">
                     <p>
-                        <label>&copy;</label> All rights reserved by <a href="https://github.com/Tech-Mantra" target="_blank" rel="noopener noreferrer">Tech-Mantra</a>&nbsp;&bull;&nbsp;
-                        <span className="mb-2 bg-light text-dark round-border no-padding-right" data-toggle="tooltip" data-placement="top" title={this.info}>API <label className={this.status === "Good" ? "mb-2 bg-success text-white round-border" : "mb-2 bg-danger text-white round-border"} onClick={this.reloadStatus}> {this.status}</label></span>
+                        <label>&copy;</label> All rights reserved by
+                        <a href="https://github.com/Tech-Mantra"
+                         target="_blank"
+                         rel="noopener noreferrer">
+                            Tech-Mantra</a>&nbsp;&bull;&nbsp;
+                        <span className="mb-2 bg-light text-dark round-border no-padding-right"
+                         data-toggle="tooltip"
+                         data-placement="top"
+                         title={this.props.info}>
+                            API
+                            <label
+                             className={labelClass}
+                             onClick={this.reloadStatus}>
+                                {this.props.status}
+                            </label>
+                        </span>
                     </p>
                 </div>
             </footer>
@@ -58,17 +69,23 @@ class Footer extends Component {
     }
 
     reloadStatus() {
-        this.status = "Loading";
         this.props.checkStatus();
         this.props.checkInfo();
     }
 }
 
 Footer.propTypes = {
-    status: PropTypes.string,
-    info: PropTypes.string,
-    checkStatus: PropTypes.func,
-    checkInfo: PropTypes.func
+    status:      PropTypes.string.isRequired,
+    info:        PropTypes.string.isRequired,
+    checkStatus: PropTypes.func.isRequired,
+    checkInfo:   PropTypes.func.isRequired
+};
+
+Footer.defaultProps = {
+    status:      "Loading",
+    info:        INFO_ERROR,
+    checkStatus: noop,
+    checkInfo:   noop
 };
 
 const mapStateToProps = function (state) {

@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 
 class SubmitBtn extends Component {
     constructor(props) {
@@ -28,7 +29,9 @@ class SubmitBtn extends Component {
 
     render() {
         return(
-            <button type="button" className="btn btn-light custom-btn" onClick={this.props.onSubmit}>
+            <button type="button"
+             className="btn btn-light custom-btn"
+             onClick={this.props.onSubmit}>
                 Submit
             </button>
         );
@@ -37,6 +40,10 @@ class SubmitBtn extends Component {
 
 SubmitBtn.propTypes = {
     onSubmit: PropTypes.func.isRequired
+};
+
+SubmitBtn.defaultProps = {
+    onSubmit: noop
 };
 
 export default SubmitBtn;

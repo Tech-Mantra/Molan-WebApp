@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/component/theme
+ * Molan: Molan WebApp - test/component/save_btn
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,6 +18,24 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-.align-right {
-    width: 100%;
-}
+import assert from "assert";
+// import { spy } from "sinon";
+import renderComponent from "./renderComponent";
+import SaveBtn from "../../../app/component/SaveBtn";
+
+// const onClickSpy = spy(SaveBtn.prototype, "onClick");
+
+const SaveBtnTest = describe("Testing Save Button component", function () {
+    const SaveBtnElement = renderComponent(SaveBtn);
+    it("should render a button for save", function () {
+        assert(SaveBtnElement.find("button").length, 1);
+    });
+    /*
+    it("should call the save file handler when clicked", function () {
+        SaveBtnElement.find("button").simulate("click");
+        assert(onClickSpy.calledOnce, true);
+    });
+    */
+});
+
+export default SaveBtnTest;

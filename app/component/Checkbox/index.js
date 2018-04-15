@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 
 class Checkbox extends Component {
     constructor(props) {
@@ -29,9 +30,13 @@ class Checkbox extends Component {
     render() {
         return(
             <div className="form-check">
-                <input className="form-check-input" type="checkbox" checked={this.props.inputCheck} onChange={this.props.onCustomInputChecked} id="inputCheck"/>
+                <input type="checkbox"
+                 className="form-check-input"
+                 checked={this.props.inputCheck}
+                 onChange={this.props.onCustomInputChecked}
+                 id="inputCheck"/>
                 <label className="form-check-label" htmlFor="inputCheck">
-                Custom Input
+                    Custom Input
                 </label>
             </div>
         );
@@ -41,6 +46,11 @@ class Checkbox extends Component {
 Checkbox.propTypes = {
     inputCheck:           PropTypes.bool.isRequired,
     onCustomInputChecked: PropTypes.func.isRequired
+};
+
+Checkbox.defaultProps = {
+    inputCheck:           false,
+    onCustomInputChecked: noop
 };
 
 export default Checkbox;

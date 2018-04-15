@@ -20,7 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { PAGE_TITLE, TAB_LIST } from "../../util/config";
+import { PAGE_TITLE, TAB_LIST, CONTENT_ERROR } from "../../util/config";
 import Home from "../Home";
 
 class Content extends Component {
@@ -30,32 +30,40 @@ class Content extends Component {
 
     render() {
         switch (this.props.selectedTab) {
-            case TAB_LIST.HOME.ID:
+            case TAB_LIST.HOME.ID: {
                 document.title = TAB_LIST.HOME.NAME + " • " + PAGE_TITLE;
                 return(
                     <Home/>
                 );
-            case TAB_LIST.FEATURES.ID:
+            }
+            case TAB_LIST.FEATURES.ID: {
                 document.title = TAB_LIST.FEATURES.NAME + " • " + PAGE_TITLE;
                 return(
                     <h3>Features Available</h3>
                 );
-            case TAB_LIST.CONTACT.ID:
+            }
+            case TAB_LIST.CONTACT.ID: {
                 document.title = TAB_LIST.CONTACT.NAME + " • " + PAGE_TITLE;
                 return(
                     <h3>Contact Information</h3>
                 );
-            default:
+            }
+            default: {
                 document.title = "Error • " + PAGE_TITLE;
                 return(
-                    <h3>Oops! Some error occured, please reload this page.</h3>
+                    <h3>{CONTENT_ERROR}</h3>
                 );
+            }
         }
     }
 }
 
 Content.propTypes = {
     selectedTab: PropTypes.number.isRequired
+};
+
+Content.defaultProps = {
+    selectedTab: 0
 };
 
 export default Content;

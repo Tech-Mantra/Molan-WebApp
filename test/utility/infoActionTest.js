@@ -36,8 +36,12 @@ const infoActionTest = describe("Checking API Info", function () {
             assert(typeof action.payload, "object");
             assert(typeof action.payload.then, "function");
         });
-        it("should resolve 200 OK", function () {
-            console.log("No test given...");
+        it("should resolve 200 OK", function (done) {
+            action.payload.then(function (res) {
+                done(assert(res.status, 200));
+            }).catch(function (err) {
+                done(err);
+            });
         });
     });
 });

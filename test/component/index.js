@@ -19,8 +19,11 @@
  */
 
 import CheckBoxTest from "./shallow/CheckBoxTest";
-// import HeaderComponentTest from "./mount/HeaderComponentTest";
-// import FileBtnTest from "./mount/FileBtnTest";
+import ContentTest from "./mount/ContentTest";
+import FileBtnTest from "./mount/FileBtnTest";
+import FooterComponentTest from "./mount/FooterComponentTest";
+import HeaderComponentTest from "./mount/HeaderComponentTest";
+import HomeComponentTest from "./mount/HomeComponentTest";
 import InputComponentTest from "./shallow/InputComponentTest";
 import LanguageComponentTest from "./shallow/LanguageComponentTest";
 import ReloadBtnTest from "./shallow/ReloadBtnTest";
@@ -28,6 +31,11 @@ import SubmitBtnTest from "./shallow/SubmitBtnTest";
 
 const combinedComponentTest = {
     CheckBoxTest:          CheckBoxTest,
+    ContentTest:           ContentTest,
+    FileBtnTest:           FileBtnTest,
+    FooterComponentTest:   FooterComponentTest,
+    HeaderComponentTest:   HeaderComponentTest,
+    HomeComponentTest:     HomeComponentTest,
     InputComponentTest:    InputComponentTest,
     LanguageComponentTest: LanguageComponentTest,
     ReloadBtnTest:         ReloadBtnTest,

@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 import { TAB_LIST } from "../../util/config";
 import Navlink from "./Navlink";
 
@@ -33,7 +34,11 @@ class Header extends Component {
         return(
             <header className="masthead mb-auto">
                 <div className="inner">
-                    <button type="button" className="btn btn-dark masthead-brand" data-toggle="tooltip" data-placement="top" title="Next Generation IDE">
+                    <button type="button"
+                     className="btn btn-dark masthead-brand"
+                     data-toggle="tooltip"
+                     data-placement="top"
+                     title="Next Generation IDE">
                         <h3>Molan</h3>
                     </button>
                     <nav className="nav nav-masthead justify-content-center">
@@ -41,7 +46,12 @@ class Header extends Component {
                         function () {
                             const NavlinkArray = [];
                             Array.forEach(Object.values(TAB_LIST), function (item) {
-                                NavlinkArray.push(<Navlink key={item.ID} selectedTab={selectedTab} currentTabID={item.ID} currentTabName={item.NAME} updateTab={updateTab}/>);
+                                NavlinkArray.push(
+                                    <Navlink key={item.ID}
+                                     selectedTab={selectedTab}
+                                     currentTabID={item.ID}
+                                     currentTabName={item.NAME}
+                                     updateTab={updateTab}/>);
                             });
                             return NavlinkArray;
                         }()
@@ -56,6 +66,11 @@ class Header extends Component {
 Header.propTypes = {
     selectedTab: PropTypes.number.isRequired,
     updateTab:   PropTypes.func.isRequired
+};
+
+Header.defaultProps = {
+    selectedTab: 0,
+    updateTab:   noop
 };
 
 export default Header;

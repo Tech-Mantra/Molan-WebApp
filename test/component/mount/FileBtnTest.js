@@ -19,27 +19,20 @@
  */
 
 import assert from "assert";
-import React from "react";
-import { shallow } from "enzyme";
 import { spy } from "sinon";
+import renderComponent from "./renderComponent";
 import FileBtn from "../../../app/component/FileBtn";
 
-const fakeCallback = spy(),
-      clickHandler = spy(FileBtn.prototype, "onClick");
+const clickHandler  = spy(FileBtn.prototype, "onClick");
 
 const FileBtnTest = describe("Testing File Button component", function () {
-    const FileBtnElement = shallow(<FileBtn onChange={fakeCallback}/>);
+    const FileBtnElement = renderComponent(FileBtn);
     it("should render a button for file upload", function () {
         assert(FileBtnElement.find("button").length, 1);
     });
-    context("File upload button responsiveness", function () {
+    it("should trigger file input when clicked", function () {
         FileBtnElement.find("button").simulate("click");
-        it("should trigger file input when clicked", function () {
-            assert(clickHandler.calledOnce, true);
-        });
-        it("should call the upload handler when clicked", function () {
-            assert(fakeCallback.calledOnce, true);
-        });
+        assert(clickHandler.calledOnce, true);
     });
 });
 

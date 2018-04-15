@@ -31,14 +31,21 @@ class SaveBtn extends Component {
 
     render() {
         return(
-            <button type="button" className="btn btn-outline-light btn-sm small-btn" data-toggle="tooltip" data-placement="top" title="Save to file" onClick={this.onClick}>
+            <button type="button"
+             className="btn btn-outline-light btn-sm small-btn"
+             data-toggle="tooltip"
+             data-placement="top"
+             title="Save to file"
+             onClick={this.onClick}>
                 <i className="far fa-save"></i>
             </button>
         );
     }
 
     onClick() {
-        const blob = new Blob([this.props.code], {type: "text/plain;charset=ascii"});
+        const blob = new Blob([ this.props.code ], {
+            type: "text/plain;charset=ascii"
+        });
         const fileName = `molan${lang_ext(this.props.language)}`;
         saveAs(blob, fileName);
     }
@@ -47,6 +54,11 @@ class SaveBtn extends Component {
 SaveBtn.propTypes = {
     code:     PropTypes.string.isRequired,
     language: PropTypes.string.isRequired
+};
+
+SaveBtn.defaultProps = {
+    code:     "",
+    language: "text"
 };
 
 export default SaveBtn;

@@ -26,13 +26,17 @@ import Language from "../../../app/component/Language";
 
 const fakeCallback = spy();
 
-const LanguageComponentTest = describe("Testing Language component", function () {
-    const LanguageElement = shallow(<Language onLanguageSelect={fakeCallback} defaultValue="c"/>);
+const LanguageComponentTest = describe("Testing Language component",
+    function () {
+
+    const LanguageElement = shallow(<Language
+        onLanguageSelect={fakeCallback}/>);
     it("should render a dropdown list of options", function () {
         assert(LanguageElement.find("select").length, 1);
     });
-    it("should select defaultValue when mounted", function () {
-        console.log("No test provided...");
+    it("should select default language", function () {
+        assert(LanguageElement.find("select").first().props().defaultValue,
+            "c");
     });
     it("should call the change handler when selected a value", function () {
         let event = { target: { value: "cpp" }};

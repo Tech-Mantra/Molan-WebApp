@@ -20,20 +20,29 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 
 class FileBtn extends Component {
     constructor(props) {
         super(props);
-        this.fileBtn = null;
-        this.onClick = this.onClick.bind(this);
+        this.fileBtn  = null;
+        this.onClick  = this.onClick.bind(this);
         this.onChange = this.onChange.bind(this);
     }
 
     render() {
         return(
-            <button type="button" className="btn btn-outline-light btn-sm small-btn" data-toggle="tooltip" data-placement="top" title="Upload a file" onClick={this.onClick}>
+            <button type="button"
+             className="btn btn-outline-light btn-sm small-btn"
+             data-toggle="tooltip"
+             data-placement="top"
+             title="Upload a file"
+             onClick={this.onClick}>
                 <i className="fas fa-upload"></i>
-                <input type="file" accepts=".c,.cpp,.java,.js,.py" style={{ display: "none" }} ref={input => this.fileBtn = input} onChange={this.onChange}/>
+                <input type="file" accepts=".c,.cpp,.java,.js,.py"
+                 style={{ display: "none" }}
+                 ref={input => this.fileBtn = input}
+                 onChange={this.onChange}/>
             </button>
         );
     }
@@ -54,6 +63,10 @@ class FileBtn extends Component {
 
 FileBtn.propTypes = {
     onChange: PropTypes.func.isRequired
+};
+
+FileBtn.defaultProps = {
+    onChange: noop
 };
 
 export default FileBtn;

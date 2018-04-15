@@ -32,8 +32,13 @@ const RANDOM_ID = 12345,
 
 const classMethodSpy = spy(OutputText.prototype, "alertClassName");
 
-const OutputTextTest = describe("Testing Result Output component", function () {
-    const InputTextElement = shallow(<OutputText status={RANDOM_ST} id={RANDOM_ID} input={RANDOM_IP} output={RANDOM_OP}/>);
+const OutputTextTest = describe("Testing Result Output component",
+    function () {
+
+    const InputTextElement = shallow(<OutputText status={RANDOM_ST}
+        id={RANDOM_ID}
+        input={RANDOM_IP}
+        output={RANDOM_OP}/>);
     it("should render a card div for output", function () {
         assert(InputTextElement.find(".card").length, 1);
     });
@@ -49,12 +54,15 @@ const OutputTextTest = describe("Testing Result Output component", function () {
     it("should show the result output inside card text", function () {
         assert(InputTextElement.find("#output").innerText, RANDOM_OP);
     });
-    const InputTextElement2 = shallow(<OutputText status={RANDOM_ST} id={RANDOM_ID}/>);
+    const InputTextElement2 = shallow(<OutputText status={RANDOM_ST}
+        id={RANDOM_ID}/>);
     it("should show default value in case of empty input", function () {
-        assert(InputTextElement2.find("#input").innerText, DEFAULT_TEXT.INPUT);
+        assert(InputTextElement2.find("#input").innerText,
+            DEFAULT_TEXT.INPUT);
     });
     it("should show default value in case of empty output", function () {
-        assert(InputTextElement2.find("#output").innerText, DEFAULT_TEXT.OUTPUT);
+        assert(InputTextElement2.find("#output").innerText,
+            DEFAULT_TEXT.OUTPUT);
     });
 });
 

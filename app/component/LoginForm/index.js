@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 import Modal from "react-modal";
 import { connect } from "react-redux";
 import { LOGIN_ACTION, SIGNUP_ACTION, LOGOUT_ACTION } from "../../action/actionTypes";

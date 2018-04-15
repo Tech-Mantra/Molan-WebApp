@@ -27,13 +27,15 @@ import Checkbox from "../../../app/component/Checkbox";
 const fakeCallback = spy();
 
 const CheckboxTest = describe("Testing Checkbox component", function () {
-    const CheckboxElement = shallow(<Checkbox inputCheck={true} onCustomInputChecked={fakeCallback}/>);
+    const CheckboxElement = shallow(<Checkbox inputCheck={true}
+        onCustomInputChecked={fakeCallback}/>);
     it("should render a checkbox for custom input", function () {
         assert(CheckboxElement.find("input [type=\"checkbox\"]").length, 1);
     });
     it("should call the change handler when checked", function () {
         let event = { target: { value: true }};
-        CheckboxElement.find("input [type=\"checkbox\"]").simulate("change", event);
+        CheckboxElement.find("input [type=\"checkbox\"]")
+            .simulate("change", event);
         assert(fakeCallback.calledWith(event), true);
     });
 });

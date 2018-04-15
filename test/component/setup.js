@@ -1,5 +1,5 @@
 /*
- * Molan: Molan WebApp - app/util/config
+ * Molan: Molan WebApp - test/component/setup
  * Author: Progyan Bhattacharya <progyanb@acm.org>
  *
  * Copyright 2018 Tech-Mantra, All rights reserved.
@@ -18,29 +18,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-export const API_PATH = "http://0.0.0.0:3000/api";
-export const PAGE_TITLE = "Molan: neXT Generation IDE";
-export const TAB_LIST = {
-    "HOME": {
-        "ID": 0,
-        "NAME": "Home"
-    },
-    "FEATURES": {
-        "ID": 1,
-        "NAME": "Features"
-    },
-    "CONTACT": {
-        "ID": 2,
-        "NAME": "Contact"
-    },
-    "LOGIN": {
-        "ID": 3,
-        "NAME": "Login"
-    }
-};
-export const CONTENT_ERROR = "Oops! Some error occured, please reload this page.";
-export const EXE_STAT = {
-    "SUCCESS": "Success",
-    "RUNTIME_ERROR": "Runtime Error",
-    "COMPILE_ERROR": "Compile Error"
-};
+
+import { configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+
+const config = configure({ adapter: new Adapter() });
+
+export default config;

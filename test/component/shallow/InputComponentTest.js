@@ -26,8 +26,11 @@ import InputText from "../../../app/component/InputText";
 
 const fakeCallback = spy();
 
-const InputTextTest = describe("Testing Custom Input component", function () {
-    const InputTextElement = shallow(<InputText onCustomInput={fakeCallback}/>);
+const InputTextTest = describe("Testing Custom Input component",
+    function () {
+
+    const InputTextElement = shallow(<InputText
+        onCustomInput={fakeCallback}/>);
     it("should render a textarea for input", function () {
         assert(InputTextElement.find("textarea").length, 1);
     });

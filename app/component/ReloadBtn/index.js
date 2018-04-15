@@ -20,6 +20,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { noop } from "lodash";
 
 class ReloadBtn extends Component {
     constructor(props) {
@@ -28,7 +29,12 @@ class ReloadBtn extends Component {
 
     render() {
         return(
-            <button type="button" className="btn btn-outline-light btn-sm small-btn" data-toggle="tooltip" data-placement="top" title="Reload initial code" onClick={this.props.onReload}>
+            <button type="button"
+             className="btn btn-outline-light btn-sm small-btn"
+             data-toggle="tooltip"
+             data-placement="top"
+             title="Reload initial code"
+             onClick={this.props.onReload}>
                 <i className="fas fa-sync-alt"></i>
             </button>
         );
@@ -37,6 +43,10 @@ class ReloadBtn extends Component {
 
 ReloadBtn.propTypes = {
     onReload: PropTypes.func.isRequired
+};
+
+ReloadBtn.defaultProps = {
+    onReload: noop
 };
 
 export default ReloadBtn;

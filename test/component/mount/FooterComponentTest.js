@@ -19,21 +19,40 @@
  */
 
 import assert from "assert";
-import React from "react";
-import { shallow } from "enzyme";
 import { spy } from "sinon";
-import FooterComponent from "../../app/component/Footer";
+import renderComponent from "./renderComponent";
+import { INFO_ERROR } from "../../../app/action/actionTypes";
+import { Footer as FooterComponent } from "../../../app/component/Footer";
 
-const componentDidMountSpy = spy(FooterComponent.prototype, "componentDidMount");
+const RANDOM_STATUS = "Good";
 
-const FooterComponentTest = describe("Testing Footer component", function () {
-    const FooterElement = shallow(<FooterComponent store={new Object()}/>);
-    const checkApiStatusSpy = spy(FooterElement.instance().props, "checkStatus");
-    if (componentDidMountSpy.calledOnce) {
-        it("should check for API status", function () {
-            assert(checkApiStatusSpy.calledOnce, true);
-        });
-    }
+const checkStatusSpy = spy(),
+      checkInfoSpy   = spy();
+
+const FooterComponentTest = describe("Testing Footer component",
+    function () {
+
+    const FooterElement = renderComponent(FooterComponent, {
+        status:      RANDOM_STATUS,
+        checkStatus: checkStatusSpy,
+        checkInfo:   checkInfoSpy
+    });
+    it("should check for API status", function () {
+        assert(checkStatusSpy.calledOnce, true);
+    });
+    it("should render label with API status", function () {
+        const labelClass = RANDOM_STATUS === "Good" ?
+                           ".mb-2 .bg-success .text-white .round-border" :
+                           ".mb-2 .bg-danger .text-white .round-border";
+        assert(FooterElement.find(labelClass).length, 1);
+    });
+    it("should check for API info", function () {
+        assert(checkInfoSpy.calledOnce, true);
+    });
+    it("should render span element with API info on it", function () {
+        assert(FooterElement.find(`span[title="${INFO_ERROR}"]`).length,
+            1);
+    });
 });
 
 export default FooterComponentTest;

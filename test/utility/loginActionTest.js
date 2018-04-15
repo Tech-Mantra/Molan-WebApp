@@ -19,7 +19,9 @@
  */
 
 import assert from "assert";
-import { LOGIN_ACTION, LOGOUT_ACTION, SIGNUP_ACTION } from "../../app/action/actionTypes";
+import {
+    LOGIN_ACTION, LOGOUT_ACTION, SIGNUP_ACTION
+} from "../../app/action/actionTypes";
 import userAuth from "../../app/action/loginAction";
 
 const userInfo = {
@@ -42,15 +44,15 @@ const loginActionTest = describe("Checking user authentication", function () {
             assert(typeof action.payload.then, "function");
         });
         it("should log in the current user", function (done) {
-            action.payload.then(function (data) {
-                done(assert(data.loggedIn, true));
+            action.payload.then(function (res) {
+                done(assert(res.data.loggedIn, true));
             }).catch(function (err) {
                 done(err);
             });
         });
     });
     context("Logging out current user", function () {
-        const action = userAuth(LOGOUT_ACTION, userInfo);
+        const action = userAuth(LOGOUT_ACTION, { username: userInfo.username });
         it("should call logout action", function () {
             assert(typeof action, "object");
             assert(action.type, LOGOUT_ACTION);
@@ -60,8 +62,8 @@ const loginActionTest = describe("Checking user authentication", function () {
             assert(typeof action.payload.then, "function");
         });
         it("should log out the current user", function (done) {
-            action.payload.then(function (data) {
-                done(assert(data.loggedIn, false));
+            action.payload.then(function (res) {
+                done(assert(res.data.loggedIn === false, true));
             }).catch(function (err) {
                 done(err);
             });
@@ -78,8 +80,8 @@ const loginActionTest = describe("Checking user authentication", function () {
             assert(typeof action.payload.then, "function");
         });
         it("should log in the current user", function (done) {
-            action.payload.then(function (data) {
-                done(assert(data.username, userInfo.username));
+            action.payload.then(function (res) {
+                done(assert(res.data.username, userInfo.username));
             }).catch(function (err) {
                 done(err);
             });
