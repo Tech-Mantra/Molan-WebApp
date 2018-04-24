@@ -78,15 +78,31 @@ class LoginForm extends Component {
 
     renderForm() {
         if (this.props.loggedIn) {
+            const username = this.props.username;
             return(
                 <form>
                     <div className="form-group">
                         <label htmlFor="Email">You are logged in as</label>
-                        <input type="email" className="form-control" id="email" placeholder="Enter Email ID" value={this.props.username} readOnly={true} required="required"/>
+                        <input type="email"
+                         className="form-control"
+                         id="email"
+                         placeholder="Enter Email ID"
+                         value={username}
+                         readOnly={true}
+                         required="required"/>
                     </div>
                     <div className="btn-group">
-                        <button type="submit" className="btn btn-primary" onClick={() => this.onSubmit(LOGOUT_ACTION)}>Logout</button>
-                        <button className="btn btn-default" onClick={this.props.closeModal}>Cancel</button>
+                        <button type="submit"
+                         className="btn btn-primary"
+                         onClick={
+                             () => this.props.submitAuth(LOGOUT_ACTION, {
+                                 username: username
+                             })
+                         }>
+                            Logout
+                        </button>
+                        <button className="btn btn-default"
+                         onClick={this.props.closeModal}>Cancel</button>
                     </div>
                 </form>
             );
@@ -102,9 +118,18 @@ class LoginForm extends Component {
                         <input type="password" className="form-control" id="password" placeholder="Password" value={this.state.password} onChange={this.onChange} required="required"/>
                     </div>
                     <div className="btn-group">
-                        <button type="submit" className="btn btn-primary" onClick={() => this.onSubmit(LOGIN_ACTION)}>Login</button>
-                        <button type="submit" className="btn btn-dark" onClick={() => this.onSubmit(SIGNUP_ACTION)}>Signup</button>
-                        <button className="btn btn-default" onClick={this.props.closeModal}>Cancel</button>
+                        <button type="submit"
+                         className="btn btn-primary"
+                         onClick={() => this.onSubmit(LOGIN_ACTION)}>
+                            Login
+                        </button>
+                        <button type="submit"
+                         className="btn btn-dark"
+                         onClick={() => this.onSubmit(SIGNUP_ACTION)}>
+                            Signup
+                        </button>
+                        <button className="btn btn-default"
+                         onClick={this.props.closeModal}>Cancel</button>
                     </div>
                 </form>
             );
@@ -129,11 +154,20 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
     error:      PropTypes.string,
-    loggedIn:   PropTypes.bool,
-    username:   PropTypes.string,
+    loggedIn:   PropTypes.bool.isRequired,
+    username:   PropTypes.string.isRequired,
     showModal:  PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
-    submitAuth: PropTypes.func
+    submitAuth: PropTypes.func.isRequired
+};
+
+LoginForm.defaultProps = {
+    error:      null,
+    loggedIn:   false,
+    username:   "abc@cba.com",
+    showModal:  false,
+    closeModal: noop,
+    submitAuth: noop
 };
 
 const mapStateToProps = function (state) {

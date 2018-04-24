@@ -30,4 +30,5 @@ export const LOGIN_FAILURE     = "Failed to authenticate the details";
 export const LOGOUT_ACTION     = "LOGOUT_ACTION";
 export const LOGOUT_FAILURE    = "Failed to logout user from server";
 export const SIGNUP_ACTION     = "SIGNUP_ACTION";
-export const SAVE_TEMPLATE     = "SAVE_TEMPLATE";
+export const LOGIN_TOKEN       = "MOLAN_USER_AUTH";
+export const FAKE_ACTION       = "FAKE ACTION";

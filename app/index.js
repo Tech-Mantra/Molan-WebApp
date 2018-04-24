@@ -21,7 +21,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, dispatch } from "redux";
 import promiseMiddleware from "redux-promise";
 import { reloginAction } from "./action/loginAction";
 import Header from "./component/Header";
@@ -34,7 +34,7 @@ import { TAB_LIST } from "./util/config";
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
 const store = createStoreWithMiddleware(reducer);
 
-reloginAction();
+store.dispatch(reloginAction());
 
 class Index extends Component {
     constructor(props) {

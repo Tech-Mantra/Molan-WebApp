@@ -20,17 +20,14 @@
 
 import axios from "axios";
 import { API_PATH } from "../util/config";
-import { LOGIN_ACTION, LOGOUT_ACTION, SIGNUP_ACTION, SAVE_TEMPLATE } from "./actionTypes";
-
-const LOCAL_KEY = "MOLAN_USER_AUTH";
+import {
+    LOGIN_ACTION, LOGOUT_ACTION, SIGNUP_ACTION, LOGIN_TOKEN, FAKE_ACTION
+} from "./actionTypes";
 
 function userAuth(event, object) {
     if (typeof object !== "undefined" && object !== null) {
         switch (event) {
             case LOGIN_ACTION: {
-                if (typeof localStorage !== "undefined") {
-                    localStorage.setItem(LOCAL_KEY, object);
-                }
                 return loginAction(object);
             }
             case SIGNUP_ACTION: {
@@ -45,26 +42,44 @@ function userAuth(event, object) {
     }
 }
 
-function loginAction(data) {
-    const auth = new Buffer(`${data.username}:${data.password}`);
-    const request = axios.post(API_PATH + "/login", null, { headers: { Authorization: `Basic ${auth.toString("base64")}` }});
+function loginHelper(auth) {
+    console.log("called");
+    const request = axios.post(API_PATH + "/login", null, {
+        headers: {
+            Authorization: "Basic " + auth
+        }});
     return {
         type: LOGIN_ACTION,
         payload: request
     };
 }
 
+function loginAction(data) {
+    const buffer = new Buffer(`${data.username}:${data.password}`);
+    const auth   = buffer.toString("base64");
+    if (typeof localStorage !== "undefined") {
+        localStorage.setItem(LOGIN_TOKEN, auth);
+    }
+    return loginHelper(auth);
+}
+
 export function reloginAction() {
     if (typeof localStorage !== "undefined") {
-        const data = localStorage.getItem(LOCAL_KEY);
-        if (typeof data !== "undefined" && data !== null) {
-            loginAction(data);
+        const auth = localStorage.getItem(LOGIN_TOKEN);
+        if (typeof auth !== "undefined" && auth !== null) {
+            return loginHelper(auth);
         }
     }
+    return {
+        type: FAKE_ACTION
+    };
 }
 
 function logoutAction(data) {
     const request = axios.post(API_PATH + "/logout", data);
+    if (typeof localStorage !== "undefined") {
+        localStorage.removeItem(LOGIN_TOKEN);
+    }
     return {
         type: LOGOUT_ACTION,
         payload: request
@@ -77,10 +92,6 @@ function signupAction(data) {
         type: SIGNUP_ACTION,
         payload: request
     };
-}
-
-export function saveTemplate(user, code) {
-    console.log(SAVE_TEMPLATE, user, code);
 }
 
 export default userAuth;

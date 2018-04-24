@@ -18,20 +18,39 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-import { LOGIN_ACTION, LOGIN_FAILURE, LOGOUT_ACTION, LOGOUT_FAILURE, SIGNUP_ACTION } from "../action/actionTypes";
+import {
+    LOGIN_ACTION, LOGIN_FAILURE, LOGOUT_ACTION, LOGOUT_FAILURE,
+    SIGNUP_ACTION
+} from "../action/actionTypes";
 
 const loginReducer = function (state = {}, action) {
+    // console.log(action);
     switch (action.type) {
         case LOGIN_ACTION:
         case SIGNUP_ACTION: {
             console.log("loginReducer: ", action);
-            const data = action.payload.data || { loggedIn: false, error: LOGIN_FAILURE, cache: [] };
-            return Object.assign({}, state, { cache: data.cache, error: data.error, loggedIn: data.loggedIn, username: data.username });
+            const data = action.payload.data || {
+                loggedIn: false,
+                error: LOGIN_FAILURE,
+                cache: []
+            };
+            return Object.assign({}, state, {
+                cache:    data.cache,
+                error:    data.error,
+                loggedIn: data.loggedIn,
+                username: data.username
+            });
         }
         case LOGOUT_ACTION: {
             console.log("logoutReducer: ", action);
-            const data = action.payload.data || { loggedIn: true, error: LOGOUT_FAILURE };
-            return Object.assign({}, state, { error: data.error, loggedIn: data.loggedIn });
+            const data = action.payload.data || {
+                loggedIn: true,
+                error: LOGOUT_FAILURE
+            };
+            return Object.assign({}, state, {
+                error:    data.error,
+                loggedIn: data.loggedIn
+            });
         }
         default:
             return state;
