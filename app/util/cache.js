@@ -18,7 +18,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  */
 
-export const LOCALKEY = "molan";
+const LOCALKEY = "molan";
 
 const cache = function (code) {
     if (typeof localStorage !== "object") {
@@ -30,6 +30,11 @@ const cache = function (code) {
         return set;
     }
     if (typeof code !== "undefined" && code !== null) {
+        if (Array.isArray(code) && code.length === 0) {
+            localStorage.removeItem(LOCALKEY);
+            return [];
+        }
+        console.log("Here 37");
         localStorage.setItem(LOCALKEY, JSON.stringify(code));
         return code;
     }

@@ -32,7 +32,7 @@ import ReloadBtn from "../ReloadBtn";
 import SaveBtn from "../SaveBtn";
 import FileBtn from "../FileBtn";
 import SubmitBtn from "../SubmitBtn";
-import cache, { LOCALKEY } from "../../util/cache";
+import cache from "../../util/cache";
 import init_code from "../../util/init_code";
 import "./style.css";
 
@@ -71,6 +71,14 @@ class Home extends Component {
         cache(this.code);
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+        if (this.props.login !== nextProps.login) {
+            this.code = cache(nextProps.cache);
+            console.log(this.code);
+        }
+    }
+
     render() {
         const language = this.state.language;
         let code = null;
@@ -90,7 +98,7 @@ class Home extends Component {
         };
         return(
             <main className="inner"
-            role="main"
+             role="main"
              style={{textAlign: "justify"}}>
                 <div className="row align-items-start">
                     <div className="col align-self-start">
@@ -170,10 +178,8 @@ class Home extends Component {
     }
 
     onReload() {
-        if (typeof localStorage !== "undefined") {
-            localStorage.removeItem(LOCALKEY);
-        }
         this.code = [];
+        cache([]);
         this.forceUpdate();
     }
 
@@ -212,6 +218,7 @@ class Home extends Component {
 
 Home.propTypes = {
     login:        PropTypes.bool,
+    cache:        PropTypes.array,
     user:         PropTypes.string,
     id:           PropTypes.number,
     status:       PropTypes.string,
@@ -223,6 +230,7 @@ Home.propTypes = {
 const mapStateToProps = function (state) {
     return {
         login:  state.loginReducer.loggedIn,
+        cache:  state.loginReducer.cache,
         user:   state.loginReducer.username,
         id:     state.formReducer.id,
         status: state.formReducer.status,

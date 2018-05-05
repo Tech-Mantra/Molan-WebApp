@@ -43,9 +43,11 @@ const loginReducer = function (state = {}, action) {
             console.log("logoutReducer: ", action);
             const data = action.payload.data || {
                 loggedIn: true,
-                error: LOGOUT_FAILURE
+                error: LOGOUT_FAILURE,
+                cache: []
             };
             return Object.assign({}, state, {
+                cache:    data.cache,
                 error:    data.error,
                 loggedIn: data.loggedIn
             });
