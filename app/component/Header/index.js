@@ -45,7 +45,7 @@ class Header extends Component {
                     {
                         function () {
                             const NavlinkArray = [];
-                            Array.forEach(Object.values(TAB_LIST), function (item) {
+                            Object.values(TAB_LIST).forEach(function (item) {
                                 NavlinkArray.push(
                                     <Navlink key={item.ID}
                                      selectedTab={selectedTab}
